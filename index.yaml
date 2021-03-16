@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  eap7:
+  - apiVersion: v2
+    appVersion: 7.4.0.Beta
+    created: "2021-03-16T10:05:15.10587707Z"
+    dependencies:
+    - name: wildfly-common
+      repository: https://docs.wildfly.org/wildfly-charts/
+      version: 1.1.0
+    description: Build and Deploy EAP 7 applications on OpenShift
+    digest: 67e99fbc503f37ff76ef10a740670435d7f802ba0de64429ef1660d15a188e09
+    name: eap7
+    type: application
+    urls:
+    - https://github.com/jbossas/eap-charts/releases/download/eap7-1.0.0/eap7-1.0.0.tgz
+    version: 1.0.0
+generated: "2021-03-16T10:05:14.917347798Z"
