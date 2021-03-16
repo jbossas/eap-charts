@@ -1,37 +1,37 @@
-## Welcome to GitHub Pages
+## Helm Charts for JBoss EAP
 
-You can use the [editor on GitHub](https://github.com/jbossas/eap-charts/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+<p align="center">
+  <a href="https://helm.sh"><img src="https://helm.sh/img/helm.svg" alt="Helm logo" title="WildFly" height="90"/></a>&nbsp;
+  <a href="https://www.redhat.com/en/technologies/jboss-middleware/application-platform"><img src="https://developers.redhat.com/blog/wp-content/uploads/2020/06/Logo-Red_Hat-JBoss_Enterprise_Application_Platform-B-Standard-RGB.png" alt="JBoss EAP logo" title="EAP" height="90"/></a>
+</p>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Install Helm Repository for EAP Charts
 
-### Markdown
+The `eap7` Chart can be installed from [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+```
+$ helm repo add jboss-eap https://jbossas.github.io/eap-charts/
+"jboss-eap" has been added to your repositories
 
-```markdown
-Syntax highlighted code block
+$ helm search repo eap
+NAME                    CHART VERSION   APP VERSION     DESCRIPTION
+jboss-eap/eap7          1.0.0           7.4             A Helm chart to build and deploy EAP 7 applic...
+````
 
-# Header 1
-## Header 2
-### Header 3
+# Install a Helm Release
 
-- Bulleted
-- List
+We can build and deploy the [helloworld-rs quickstart](https://github.com/wildfly/quickstart/tree/master/helloworld-rs) with this [example file](https://raw.githubusercontent.com/jbossas/eap-charts/main/examples/eap7/helloworld-rs/helloworld-rs-app.yaml):
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+$ helm install helloworld-rs-app \
+    -f https://raw.githubusercontent.com/jbossas/eap-charts/main/examples/eap7/helloworld-rs/helloworld-rs-app.yaml \
+    jboss-eap/eap7
+NAME: helloworld-rs-app
+LAST DEPLOYED: Tue Mar  9 11:57:33 2021
+STATUS: deployed
+REVISION: 1
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+# Documentation
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jbossas/eap-charts/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+A complete documentation of the `eap7` Chart is available in [its README](https://github.com/jbossas/eap-charts/blob/main/charts/eap7/README.md).
