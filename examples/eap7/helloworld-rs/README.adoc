@@ -1,0 +1,85 @@
+# Deploy EAP applications on OpenShift with Helm Charts
+:toc:               left
+:icons:             font
+:idprefix:
+:idseparator:       -
+:keywords:          openshift,eap,helm
+
+## Prerequisites
+
+### EAP S2I Images
+
+When S2I is used to build EAP applications, the EAP images must be pulled from Red Hat Container Registry and a pull secret must be create to connect to this registry.
+
+You will need to create a pull secret if you pull the EAP S2I builder image. Use the following command as a reference to create your pull secret:
+
+[source,options="nowrap"]
+----
+$ oc create secret docker-registry eap-pull-secret --docker-server=registry.redhat.io --docker-username=$USERNAME --docker-password=$PASSWORD --docker-email=$EMAIL
+----
+
+This `eap-pull-secret` is passed to OpenShift using the `build.s2i.pullSecret` configuration in the example:
+
+[source,yaml,options="nowrap"]
+----
+build:
+  pullSecret: eap-pull-secret
+----
+
+
+## Build and Deploy the Application
+
+### JDK Version
+
+You can specify which version of EAP 7 images you want to use with the configuration `build.s2i.jdk` which accepts either `"8"` or `"11"`:
+
+[source,yaml,options="nowrap"]
+----
+build:
+  s2i:
+    jdk: "11"
+----
+
+### Deploy a JAX-RS application on EAP 7 with S2I
+
+The `my-app-s2i.yaml` contains a Helm Chart that will install the https://github.com/jbossas/eap-quickstarts/tree/7.3.x/helloworld-rs[helloword-rs] quickstart on EAP 7 with OpenJDK11.
+
+EAP 7 is provisioned with the `jaxrs-server` layer which contains all that is needed to run this quickstart.
+
+[source,options="nowrap"]
+----
+$ helm install helloworld-rs-app -f examples/eap7/helloworld-rs/helloworld-rs-app.yaml ./charts/eap7
+LAST DEPLOYED: Mon Feb 15 16:39:26 2021
+...
+STATUS: deployed
+REVISION: 1
+----
+
+Let's wait for the application to be built and deployed:
+
+[source,options="nowrap"]
+----
+$ oc get deployment helloworld-rs-app -w
+NAME                READY   UP-TO-DATE   AVAILABLE   AGE
+helloworld-rs-app   0/3     3            0           72s
+...
+helloworld-rs-app   3/3     3            3           6m11s
+----
+
+Once the application is deployed, it can be accessed from the route `helloworld-rs-app `:
+
+[source,options="nowrap"]
+----
+curl -L  http://$(oc get route helloworld-rs-app -o jsonpath="{.spec.host}")/rest/json
+{"result":"Hello World!"}%
+----
+
+The application can be deleted by running the command:
+
+[source,options="nowrap"]
+----
+$ helm delete helloworld-rs-app
+release "helloworld-rs-app" uninstalled
+----
+
+
