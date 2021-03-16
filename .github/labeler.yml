@@ -1,0 +1,14 @@
+repo:
+  - ./*
+examples:
+  - examples/**/*
+charts:
+  - charts/**/*
+eap7:
+  - charts/eap7/**/*
+  - examples/eap7/**/*
+documentation:
+  - ./README.md
+  - charts/**/README.md
+  - charts/**/values.schema.json
+ 
