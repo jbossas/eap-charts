@@ -46,8 +46,18 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.openshift.io/runtime: eap
 {{- end }}
 
+{{- define "eap7.metering.labels" -}}
+com.company: "Red_Hat"
+rht.prod_name: "Red_Hat_Runtimes"
+rht.prod_ver: "2021-Q1"
+rht.comp: EAP
+rht.comp_ver: {{ quote .Chart.AppVersion }}
+rht.subcomp_t: Application
+{{- end }}
+
 {{- define "eap7.metadata.labels" -}}
 metadata:
   labels:
   {{- include "eap7.labels" . | nindent 4 }}
+  {{- include "eap7.metering.labels" . | nindent 4 }}
 {{- end -}}
