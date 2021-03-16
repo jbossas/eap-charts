@@ -20,7 +20,7 @@ jboss-eap/eap7          1.0.0           7.4             A Helm chart to build an
 
 # Install a Helm Release
 
-We can build and deploy the [helloworld-rs quickstart](https://github.com/wildfly/quickstart/tree/master/helloworld-rs) with this [example file](https://raw.githubusercontent.com/jbossas/eap-charts/main/examples/eap7/helloworld-rs/helloworld-rs-app.yaml):
+We can build and deploy the [helloworld-rs quickstart](https://github.com/jboss-developer/jboss-eap-quickstarts/tree/7.4.x/helloworld-rs) with this [example file](https://raw.githubusercontent.com/jbossas/eap-charts/main/examples/eap7/helloworld-rs/helloworld-rs-app.yaml):
 
 ```
 $ helm install helloworld-rs-app \
