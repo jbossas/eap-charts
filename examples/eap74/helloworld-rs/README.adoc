@@ -31,7 +31,7 @@ build:
 
 ### JDK Version
 
-You can specify which version of EAP 7 images you want to use with the configuration `build.s2i.jdk` which accepts either `"8"` or `"11"`:
+You can specify which version of EAP 7.4 images you want to use with the configuration `build.s2i.jdk` which accepts either `"8"` or `"11"`:
 
 [source,yaml,options="nowrap"]
 ----
@@ -40,15 +40,15 @@ build:
     jdk: "11"
 ----
 
-### Deploy a JAX-RS application on EAP 7 with S2I
+### Deploy a JAX-RS application on EAP 7.4 with S2I
 
-The `my-app-s2i.yaml` contains a Helm Chart that will install the https://github.com/jbossas/eap-quickstarts/tree/7.3.x/helloworld-rs[helloword-rs] quickstart on EAP 7 with OpenJDK11.
+The `my-app-s2i.yaml` contains a Helm Chart that will install the https://github.com/jboss-developer/jboss-eap-quickstarts.git[helloword-rs] quickstart on EAP 7 with OpenJDK11.
 
-EAP 7 is provisioned with the `jaxrs-server` layer which contains all that is needed to run this quickstart.
+EAP 7.4 is provisioned with the `jaxrs-server` layer which contains all that is needed to run this quickstart.
 
 [source,options="nowrap"]
 ----
-$ helm install helloworld-rs-app -f examples/eap7/helloworld-rs/helloworld-rs-app.yaml ./charts/eap7
+$ helm install helloworld-rs-app -f examples/eap74/helloworld-rs/helloworld-rs-app.yaml ./charts/eap74
 LAST DEPLOYED: Mon Feb 15 16:39:26 2021
 ...
 STATUS: deployed
