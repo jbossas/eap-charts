@@ -7,7 +7,7 @@
 
 # Install Helm Repository for EAP Charts
 
-The `eap7` Chart can be installed from [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/)
+The `eap74` Chart can be installed from [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/)
 
 ```
 $ helm repo add jboss-eap https://jbossas.github.io/eap-charts/
@@ -15,7 +15,7 @@ $ helm repo add jboss-eap https://jbossas.github.io/eap-charts/
 
 $ helm search repo eap
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-jboss-eap/eap7          1.0.0           7.4             A Helm chart to build and deploy EAP 7 applic...
+jboss-eap/eap74         1.0.0           7.4             A Helm chart to build and deploy EAP 7.4 applic...
 ````
 
 # Install a Helm Release
@@ -24,8 +24,8 @@ We can build and deploy the [helloworld-rs quickstart](https://github.com/jboss-
 
 ```
 $ helm install helloworld-rs-app \
-    -f https://raw.githubusercontent.com/jbossas/eap-charts/main/examples/eap7/helloworld-rs/helloworld-rs-app.yaml \
-    jboss-eap/eap7
+    -f https://raw.githubusercontent.com/jbossas/eap-charts/main/examples/eap74/helloworld-rs/helloworld-rs-app.yaml \
+    jboss-eap/eap74
 NAME: helloworld-rs-app
 LAST DEPLOYED: Tue Mar  9 11:57:33 2021
 STATUS: deployed
@@ -34,4 +34,4 @@ REVISION: 1
 
 # Documentation
 
-A complete documentation of the `eap7` Chart is available in [its README](https://github.com/jbossas/eap-charts/blob/main/charts/eap7/README.md).
+A complete documentation of the `eap7` Chart is available in [its README](https://github.com/jbossas/eap-charts/blob/main/charts/eap74/README.md).
