@@ -1,6 +1,6 @@
-# Helm Chart for EAP7
+# Helm Chart for EAP7.4
 
-A Helm chart for building and deploying a [JBoss EAP7](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) application on OpenShift.
+A Helm chart for building and deploying a [JBoss EAP 7.4](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) application on OpenShift.
 
 The build and deploy steps are configured in separate `build` and `deploy` values.
 

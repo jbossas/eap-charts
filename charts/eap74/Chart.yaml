@@ -1,6 +1,6 @@
 apiVersion: v2
-name: eap7
-description: Build and Deploy EAP 7 applications on OpenShift
+name: eap74
+description: Build and Deploy EAP 7.4 applications on OpenShift
 type: application
 version: 1.0.0
 
