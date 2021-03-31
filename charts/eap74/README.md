@@ -76,7 +76,7 @@ The configuration to build the application image is configured in a `build` sect
 | `build.s2i.jdk8.runtimeImage` | EAP S2I Runtime image for JDK 8 | `registry.redhat.io/jboss-eap-7-tech-preview/eap74-openjdk8-runtime-openshift-rhel7` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
 | `build.s2i.jdk11.builderImage` | EAP S2I Builder image for JDK 11 | `registry.redhat.io/jboss-eap-7-tech-preview/eap74-openjdk11-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
 | `build.s2i.jdk11.runtimeImage` | EAP S2I Runtime image for JDK 11 | `registry.redhat.io/jboss-eap-7-tech-preview/eap74-openjdk11-runtime-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
-| `build.s2i.galleonLayers` | A comma separated list of layer names to compose a EAP server | - |  [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/getting_started_with_jboss_eap_for_openshift_container_platform/index) |
+| `build.s2i.galleonLayers` | A list of layer names to compose a EAP server | - |  [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/getting_started_with_jboss_eap_for_openshift_container_platform/index) |
 
 
 
