@@ -2,12 +2,16 @@
 {{/*
 eap74.eapBuilderImage corresponds to the imagestream for the EAP S2I Builder image.
 It depends on the build.s2i.jdkVersion.
+
+TODO: the build.s2i.arch is not used and is hard-coded to "amd64".
+When we add support for Z-Series and PowerPC, we will rely on the value of build.s2i.arch
+to get the proper S2I images (and validate that only jdk11 can be used with Z & P)
 */}}
 {{- define "eap74.eapBuilderImage" -}}
 {{- if eq .Values.build.s2i.jdk "8"  -}}
-{{ .Values.build.s2i.jdk8.builderImage}}:{{ include "eap74.version" . }}
+{{ .Values.build.s2i.amd64.jdk8.builderImage}}:{{ include "eap74.version" . }}
 {{- else -}}
-{{ .Values.build.s2i.jdk11.builderImage}}:{{ include "eap74.version" . }}
+{{ .Values.build.s2i.amd64.jdk11.builderImage}}:{{ include "eap74.version" . }}
 {{- end -}}
 {{- end -}}
 
@@ -17,9 +21,9 @@ It depends on the build.s2i.jdkVersion.
 */}}
 {{- define "eap74.eapRuntimeImage" -}}
 {{- if eq .Values.build.s2i.jdk "8"  -}}
-{{ .Values.build.s2i.jdk8.runtimeImage}}:{{ include "eap74.version" . }}
+{{ .Values.build.s2i.amd64.jdk8.runtimeImage}}:{{ include "eap74.version" . }}
 {{- else -}}
-{{ .Values.build.s2i.jdk11.runtimeImage}}:{{ include "eap74.version" . }}
+{{ .Values.build.s2i.amd64.jdk11.runtimeImage}}:{{ include "eap74.version" . }}
 {{- end -}}
 {{- end -}}
 
