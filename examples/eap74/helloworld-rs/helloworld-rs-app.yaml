@@ -4,7 +4,8 @@ build:
   pullSecret: eap-pull-secret
   s2i:
     jdk: "11"
-    galleonLayers: 'jaxrs-server'
+    galleonLayers:
+      - jaxrs-server
   env:
   - name: ARTIFACT_DIR
     value: helloworld-rs/target

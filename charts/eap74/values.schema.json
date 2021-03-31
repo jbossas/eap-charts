@@ -258,9 +258,11 @@
                           }
                         },
                         "galleonLayers": {
-                            "description": "List of Galleon Layers to provisions (separated by commas)",
-                            "type": ["string", "null"]
-                        }
+                          "description": "List of Galleon Layers to provision",
+                          "type": ["string", "array", "null"],
+                          "items": {
+                            "type": "string"
+                          }
                     }
                 }
             }
