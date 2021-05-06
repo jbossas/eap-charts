@@ -10,7 +10,7 @@ build:
   s2i:
     version: latest
     jdk: "11"
-    arch: "amd64"
+    arch: amd64
     amd64:
       jdk8:
         builderImage: registry.redhat.io/jboss-eap-7-tech-preview/eap74-openjdk8-openshift-rhel7
