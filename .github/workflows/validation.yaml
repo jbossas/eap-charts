@@ -1,0 +1,30 @@
+# This workflow will triage pull requests and apply a label based on the
+# paths that are modified in the pull request.
+#
+# To use this workflow, you will need to set up a .github/labeler.yml
+# file with configuration.  For more information, see:
+# https://github.com/actions/labeler
+
+name: File Validation
+
+on: [push, pull_request]
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validate schema and examples
+        uses: stefanprodan/kube-tools@v1
+        with:
+          command: |
+            echo "Check JSON schema"
+            cat charts/eap74/values.schema.json | jq > /dev/null
+
+            echo "Check Yaml Examples"
+            shopt -s globstar
+            for f in examples/**/*.yaml; do # Whitespace-safe and recursive
+              echo -n "$f"
+              yq validate $f
+              echo "...✅"
+            done
