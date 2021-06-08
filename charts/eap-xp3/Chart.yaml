@@ -1,0 +1,14 @@
+apiVersion: v2
+name: eap-xp3
+description: Build and Deploy EAP XP3 applications on OpenShift
+type: application
+version: 1.0.0
+
+appVersion: "2.0"
+
+dependencies:
+- name: wildfly-common
+  version: 1.2.0
+  repository: https://docs.wildfly.org/wildfly-charts/
+  # for local development
+  #repository: file://../../../wildfly-charts/charts/wildfly-common

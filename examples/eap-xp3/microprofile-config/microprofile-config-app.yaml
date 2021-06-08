@@ -1,0 +1,19 @@
+build:
+  uri: https://github.com/jboss-developer/jboss-eap-quickstarts.git
+  ref: XP_2.0.0.GA
+  mode: bootable-jar
+  env:
+  - name: ARTIFACT_DIR
+    value: microprofile-config/target
+  - name: MAVEN_ARGS_APPEND
+    # Use the bootable-jar-openshift profile to ensure that the application
+    # can be deployed on OpenShift but disable JKube as the image will be 
+    # built and deployed by this chart.
+    value: -am -pl microprofile-config -Pbootable-jar-openshift -Djkube.skip=true
+  - name: MAVEN_OPTS
+    value: '-XX:MetaspaceSize=251m -XX:MaxMetaspaceSize=256m'
+deploy:
+  replicas: 1
+  env:
+  - name: CONFIG_PROP
+    value: Hello from OpenShift

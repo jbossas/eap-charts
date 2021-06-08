@@ -1,0 +1,77 @@
+# Install a MicroProfile Application
+:toc:               left
+:icons:             font
+:idprefix:
+:idseparator:       -
+:keywords:          openshift,wildfly,microprofile,helm
+
+This example shows how to deploy an Eclipse MicroProfile application with EAP XP 3 on OpenShift.
+
+## Prerequisites
+
+## Source Code
+
+The source code for the backend is hosted at https://github.com/jboss-developer/jboss-eap-quickstarts.git
+
+It is a simple MicroProfile application that uses JAX-RS to exposes HTTP endpoints that displays text configured with MicroProfile Config.
+
+When the application is deployed on OpenShift, it uses the `CONFIG_PROP` environment variable as the source of its config property.
+This environment variable is specified in the `deploy.env` section of the Helm Chart.
+
+## Installation
+
+The application can be built with Bootable Jar or using WildFly S2I images.
+
+### Installation with Bootable Jar
+
+The application can be compiled as a Bootable Jar.
+In that case, the Helm Chart is configured with `build.mode=bootable-jar`.
+
+[source,options="nowrap"]
+----
+$ helm install microprofile-config-app -f examples/eap-xp3/microprofile-config/microprofile-config-app.yaml ./charts/eap-xp3
+----
+
+## Deployment
+
+Once the chart is installed, let's wait for the application to be built and deployed:
+
+[source,options="nowrap"]
+----
+$ oc get deployment/microprofile-config-app -w
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+microprofile-config-app   0/1     1            0           27s
+...
+microprofile-config-app   1/1     1            1           5m29s
+----
+
+## Use the application
+
+Once the application is deployed on OpenShift, it can be accessed from the route `microprofile-config-app`.
+Let's find the host that we can use to connect to this backend:
+
+[source,options="nowrap"]
+----
+$ oc get route microprofile-config-app -o jsonpath="{.spec.host}"
+microprofile-config-app-jmesnil1-dev.apps.sandbox.x8i5.p1.openshiftapps.com
+----
+
+This value will be different for every installation of the application.
+
+We can then query this application by calling one of its HTTP endpoints:
+
+[source,options="nowrap"]
+----
+$ curl -L $(oc get route microprofile-config-app -o jsonpath="{.spec.host}")/config/value
+Hello from OpenShift%
+----
+
+## Clean up
+
+The application can be deleted by running the command:
+
+[source,options="nowrap"]
+----
+$ helm delete microprofile-config-app
+release "microprofile-config-app" uninstalled
+----
