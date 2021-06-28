@@ -8,7 +8,7 @@ appVersion: "2.0"
 
 dependencies:
 - name: wildfly-common
-  version: 1.2.0
+  version: 1.3.0
   repository: https://docs.wildfly.org/wildfly-charts/
   # for local development
   #repository: file://../../../wildfly-charts/charts/wildfly-common
