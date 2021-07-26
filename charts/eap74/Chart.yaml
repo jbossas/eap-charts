@@ -4,7 +4,7 @@ description: Build and Deploy EAP 7.4 applications on OpenShift
 type: application
 version: 1.1.0
 
-appVersion: "7.4.0.Beta"
+appVersion: "7.4"
 
 dependencies:
 - name: wildfly-common
