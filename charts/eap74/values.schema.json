@@ -275,6 +275,17 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "featurePacks": {
+                          "description": "List of additional Galleon feature-packs identified by Maven coordinates (`<groupId>:<artifactId>:<version>`)",
+                          "type": ["string", "array", "null"],
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "galleonDir": {
+                          "description": "Directory relative to the root directory for the build that contains custom content for Galleon.",
+                          "type": ["string", "null"]
                         }
                     }
                 }

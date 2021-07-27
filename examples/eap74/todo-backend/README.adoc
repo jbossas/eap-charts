@@ -1,0 +1,14 @@
+# todo-backend: quickstart for backend deployment on OpenShift
+:toc:               left
+:icons:             font
+:idprefix:
+:idseparator:       -
+:keywords:          openshift,eap74,microprofile,helm
+
+[abstract]
+The `todo-backend` quickstart demonstrates how to implement a backend that exposes a HTTP API with JAX-RS
+to manage a list of ToDo which are persisted in a database with JPA.
+
+This quickstart shows how to setup a local deployment of this backend as well as a deployment on OpenShift to connect to a PostgreSQL database also hosted on OpenShift.
+
+The `todo-backend-s2i.yaml` chart builds and deploys the backend using EAP 7.4 S2I Builder and Runtime images
