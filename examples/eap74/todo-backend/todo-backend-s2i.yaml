@@ -2,7 +2,7 @@
 # quickstart on OpenShift with the Helm Chart for EAP.
 build:
   uri: https://github.com/jboss-developer/jboss-eap-quickstarts.git
-  ref: 7.4.0.GA
+  ref: EAP_7.4.0.GA
   mode: s2i
   s2i:
     featurePacks:
