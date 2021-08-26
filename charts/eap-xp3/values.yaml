@@ -15,8 +15,8 @@ build:
     arch: amd64
     amd64:
       jdk11:
-        builderImage: jboss-eap-7/eap-xp2-openjdk11-openshift-rhel8
-        runtimeImage: jboss-eap-7/eap-xp2-openjdk11-runtime-openshift-rhel8
+        builderImage: registry.redhat.io/jboss-eap-7/eap-xp3-openjdk11-openshift-rhel8
+        runtimeImage: registry.redhat.io/jboss-eap-7/eap-xp3-openjdk11-runtime-openshift-rhel8
   output:
     kind: "ImageStreamTag"
   triggers: {}
@@ -33,7 +33,10 @@ deploy:
     httpGet:
       path: /health/live
       port: admin
+    initialDelaySeconds: 60
   readinessProbe:
     httpGet:
       path: /health/ready
       port: admin
+    initialDelaySeconds: 60
+

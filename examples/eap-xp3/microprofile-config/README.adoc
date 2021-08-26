@@ -63,7 +63,7 @@ We can then query this application by calling one of its HTTP endpoints:
 [source,options="nowrap"]
 ----
 $ curl -L $(oc get route microprofile-config-app -o jsonpath="{.spec.host}")/config/value
-Hello from OpenShift%
+Hello from OpenShift
 ----
 
 ## Clean up

@@ -1,7 +1,7 @@
 {{- if .Release.IsInstall }}
 
 {{- if .Values.build.enabled }}
-Your EAP XP3 appplication is building! To follow the build, run:
+Your EAP XP3 application is building! To follow the build, run:
 
 $ oc get build -w
 
