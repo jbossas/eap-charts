@@ -228,11 +228,11 @@
                         "arch": {
                           "description": "Architecture of the EAP S2I images",
                           "type": "string",
-                          "enum": ["amd64"],
+                          "enum": ["amd64", "ppc64le", "s390x"],
                           "default": "amd64"
                         },
                         "jdk": {
-                          "description": "JDK Version of the EAP S2I images",
+                          "description": "JDK Version of the EAP S2I images (8 is allowed only for amd64 arch)",
                           "type": "string",
                           "enum": ["8", "11"],
                           "default": "11"
@@ -267,6 +267,44 @@
                                 }
                               }
                             }    
+                          }
+                        },
+                        "ppc64le": {
+                          "description": "EAP S2I images for ppc64le architecture",
+                          "type": "object",
+                          "properties": {
+                            "jdk11": {
+                              "type": "object",
+                              "properties": {
+                                "builderImage": {
+                                  "description": "EAP S2I Builder image for JDK 11",
+                                  "type": "string"
+                                },
+                                "runtimeImage": {
+                                  "description": "EAP S2I Runtime image for JDK 11",
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "s390x": {
+                          "description": "EAP S2I images for s390x architecture",
+                          "type": "object",
+                          "properties": {
+                            "jdk11": {
+                              "type": "object",
+                              "properties": {
+                                "builderImage": {
+                                  "description": "EAP S2I Builder image for JDK 11",
+                                  "type": "string"
+                                },
+                                "runtimeImage": {
+                                  "description": "EAP S2I Runtime image for JDK 11",
+                                  "type": "string"
+                                }
+                              }
+                            }
                           }
                         },
                         "galleonLayers": {

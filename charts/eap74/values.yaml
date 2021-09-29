@@ -18,6 +18,14 @@ build:
       jdk11:
         builderImage: registry.redhat.io/jboss-eap-7/eap74-openjdk11-openshift-rhel8
         runtimeImage: registry.redhat.io/jboss-eap-7/eap74-openjdk11-runtime-openshift-rhel8
+    ppc64le:
+      jdk11:
+        builderImage: registry.redhat.io/jboss-eap-7/eap74-openj9-11-openshift-rhel8
+        runtimeImage: registry.redhat.io/jboss-eap-7/eap74-openj9-11-runtime-openshift-rhel8
+    s390x:
+      jdk11:
+        builderImage: registry.redhat.io/jboss-eap-7/eap74-openj9-11-openshift-rhel8
+        runtimeImage: registry.redhat.io/jboss-eap-7/eap74-openj9-11-runtime-openshift-rhel8
   output:
     kind: "ImageStreamTag"
   triggers: {}
