@@ -2,6 +2,12 @@
 
 A Helm chart for building and deploying a [JBoss EAP XP3](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) application on OpenShift.
 
+## The Helm Chart for EAP XP3 is a Technology Preview feature only.
+
+Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during thedevelopment process. For more information, see [Technology Preview Features Support Scope](https://access.redhat.com/support/offerings/techpreview/).
+
+## Building and Deploying Applications
+
 The build and deploy steps are configured in separate `build` and `deploy` values.
 
 The input of the `build` step is a Git repository that contains the application code and the output is an `ImageStreamTag` resource that contains the built application image.
