@@ -10,6 +10,9 @@ eap74:
 eap-xp3:
   - charts/eap-xp3/**/*
   - examples/eap-xp3/**/*
+eap-xp4:
+  - charts/eap-xp4/**/*
+  - examples/eap-xp4/**/*
 documentation:
   - ./README.md
   - charts/**/README.md
