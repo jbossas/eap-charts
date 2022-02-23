@@ -18,13 +18,9 @@ jobs:
         uses: stefanprodan/kube-tools@v1
         with:
           command: |
-            echo "Check JSON schema"
-            cat charts/eap74/values.schema.json | jq > /dev/null
+            shopt -s globstar
+            echo "Check JSON schemas"
+            cat charts/**/values.schema.json | jq > /dev/null
 
             echo "Check Yaml Examples"
-            shopt -s globstar
-            for f in examples/**/*.yaml; do # Whitespace-safe and recursive
-              echo -n "$f"
-              yq validate $f
-              echo "...✅"
-            done
+            yq eval-all 'true' examples/**/*.yaml > /dev/null
