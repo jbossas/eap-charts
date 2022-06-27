@@ -1,0 +1,12 @@
+apiVersion: v2
+name: eap8
+description: Build and Deploy EAP 8 applications on OpenShift
+type: application
+version: 1.0.0
+
+dependencies:
+- name: wildfly-common
+  version: 2.0.2
+  repository: https://docs.wildfly.org/wildfly-charts/
+  # for local development
+  #repository: file://../../../wildfly-charts/charts/wildfly-common

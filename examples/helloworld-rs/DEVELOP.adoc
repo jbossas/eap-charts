@@ -1,0 +1,69 @@
+# Reproducer
+
+## Put the Maven settings.xml in a ConfigMap
+
+[source,bash]
+----
+oc create configmap eap-maven-settings --from-file=settings.xml=./examples/helloworld-rs/ocp-settings.xml
+----
+
+## Put the EAP Maven repo in a Docker image
+
+[source,bash]
+----
+cd ~/tmp
+wget -c <url to jboss-eap-8.0.0.Beta maven-repository.zip> --no-check-certificate
+unzip jboss-eap-8.0.0.Beta-redhat-xxxxxxxx-maven-repository.zip
+----
+
+Create a Dockerfile to create a Docker image that contains this repo
+
+[source,bash]
+----
+$ cat Dockerfile
+FROM scratch
+COPY eap-maven-repo /maven-repository
+----
+
+Run docker build:
+
+
+[source,bash]
+----
+docker build -t eap-maven-repo .
+----
+
+## Push this image to OpenShift
+
+[source,bash]
+----
+$ oc registry login
+$ docker login -u openshift -p $(oc whoami -t) default-route-openshift-image-registry.apps.sandbox.x8i5.p1.openshiftapps.com
+$ docker tag  eap-maven-repo default-route-openshift-image-registry.apps.sandbox.x8i5.p1.openshiftapps.com/jmesnil1-dev/eap-maven-repo
+$ docker push default-route-openshift-image-registry.apps.sandbox.x8i5.p1.openshiftapps.com/jmesnil1-dev/eap-maven-repo
+----
+
+## Push EAP 8 S2I images to OpenShift
+
+[source,bash]
+----
+docker pull registry-proxy.engineering.redhat.com/...
+# tag to default-route-openshift-image-registry.apps.sandbox.x8i5.p1.openshiftapps.com
+# push
+----
+
+At the end, you need `ImageStream` for `eap8-openjdk11-builder-openshift-rhel8` & `eap8-openjdk11-runtime-openshift-rhel8``
+
+## Install the application with Helm
+
+[source,bash]
+----
+helm install eap8-app -f examples/helloworld-rs/helloworld-rs-app.yaml ./charts/eap8
+----
+
+## Patch the application (to use the specific maven settings)
+
+[source,bash]
+----
+oc patch buildconfig eap8-app-build-artifacts --patch-file examples/helloworld-rs/eap-mvn-settings-patch.yaml
+----

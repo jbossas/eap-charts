@@ -1,0 +1,10 @@
+{{- if .Values.deploy.enabled }}
+{{- include "wildfly-common.service.http" (list . "eap8.metadata.labels") }}
+---
+{{- include "wildfly-common.service.ping" (list . "eap8.metadata.labels") }}
+---
+{{- if .Values.deploy.tls.enabled }}
+{{- include "wildfly-common.service.https" (list . "eap8.metadata.labels") }}
+{{- end }}
+---
+{{- end -}}

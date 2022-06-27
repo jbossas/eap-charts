@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <profiles>
+        <!-- Configure the JBoss EAP Maven repository -->
+        <profile>
+            <id>jboss-eap-repository</id>
+            <repositories>
+                <repository>
+                    <id>jboss-eap-repository</id>
+                    <url>file:///tmp/src/eap-maven-repo/maven-repository</url>
+                </repository>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2/</url>
+                </repository>
+                <repository>
+                    <id>redhat-ga-repository</id>
+                    <url>https://maven.repository.redhat.com/ga/</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>jboss-eap-plugin-repository</id>
+                    <url>file:///tmp/src/eap-maven-repo/maven-repository</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2/</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>redhat-ga-repository</id>
+                    <url>https://maven.repository.redhat.com/ga/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>jboss-eap-repository</activeProfile>
+    </activeProfiles>
+
+</settings>
+

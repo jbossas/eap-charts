@@ -1,5 +1,5 @@
 # eap-charts
-Helm Charts for Red Hat JBoss Enterprise Application Platform
+Helm Charts for Red Hat JBoss Enterprise Application Platform 8 (EAP 8)
 
 ## Prerequisites
 Below are prerequisites that may apply to your use case.
