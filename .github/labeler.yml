@@ -1,0 +1,17 @@
+repo:
+  - ./*
+examples:
+  - examples/**/*
+charts:
+  - charts/**/*
+eap74:
+  - charts/eap74/**/*
+  - examples/eap74/**/*
+eap-xp3:
+  - charts/eap-xp3/**/*
+  - examples/eap-xp3/**/*
+documentation:
+  - ./README.md
+  - charts/**/README.md
+  - charts/**/values.schema.json
+ 
