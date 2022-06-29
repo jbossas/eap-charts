@@ -11,8 +11,6 @@ spec:
         kind: {{ .Values.build.s2i.kind }}
         name: {{ include "eap8.eapBuilderImage" . }}
       env:
-      - name: GALLEON_PROVISION_DEFAULT_FAT_SERVER
-        value: "true"
       - name: CUSTOM_INSTALL_DIRECTORIES
         value: extensions
       {{- if .Values.build.s2i }}
