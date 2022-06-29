@@ -2,6 +2,12 @@
 
 A Helm chart for building and deploying a [JBoss EAP 8](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) application on OpenShift.
 
+## The Helm Chart for EAP 8 Beta is a Technology Preview feature only.
+
+ Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during thedevelopment process. For more information, see [Technology Preview Features Support Scope](https://access.redhat.com/support/offerings/techpreview/).
+
+## Building and Deploying Applications
+
 The build and deploy steps are configured in separate `build` and `deploy` values.
 
 The input of the `build` step is a Git repository that contains the application code and the output is an `ImageStreamTag` resource that contains the built application image.
@@ -72,10 +78,10 @@ The configuration to build the application image is configured in a `build` sect
 | `build.s2i` | Configuration specific to building with EAP S2I images | - | - |
 | `build.s2i.kind` | Determines the type of images for S2I Builder and Runtime images (`DockerImage`, `ImageStreamTag` or `ImageStreamImage`) | `DockerImage` | (OKD Documentation](https://docs.okd.io/latest/cicd/builds/build-strategies.html#builds-strategy-s2i-build_build-strategies) |
 | `build.s2i.jdk` | JDK Version of the EAP S2I images | `"11"` | Allowed Values: `"11"`, `"17"` |
-| `build.s2i.jdk11.builderImage` | EAP S2I Builder image for JDK 11 | `jboss-eap-8-tech-preview/eap8-openjdk11-builder-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
-| `build.s2i.jdk11.runtimeImage` | EAP S2I Runtime image for JDK 11| `jboss-eap-8-tech-preview/eap8-openjdk11-runtime-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
-| `build.s2i.jdk17.builderImage` | EAP S2I Builder image for JDK 17 | `jboss-eap-8-tech-preview/eap8-openjdk17-builder-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
-| `build.s2i.jdk17.runtimeImage` | EAP S2I Runtime image for JDK 17| `jboss-eap-8-tech-preview/eap8-openjdk17-runtime-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
+| `build.s2i.jdk11.builderImage` | EAP S2I Builder image for JDK 11 | `registry.redhat.io/jboss-eap-8-tech-preview/eap8-openjdk11-builder-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
+| `build.s2i.jdk11.runtimeImage` | EAP S2I Runtime image for JDK 11| `registry.redhat.io/jboss-eap-8-tech-preview/eap8-openjdk11-runtime-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
+| `build.s2i.jdk17.builderImage` | EAP S2I Builder image for JDK 17 | `registry.redhat.io/jboss-eap-8-tech-preview/eap8-openjdk17-builder-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
+| `build.s2i.jdk17.runtimeImage` | EAP S2I Runtime image for JDK 17| `registry.redhat.io/jboss-eap-8-tech-preview/eap8-openjdk17-runtime-openshift-rhel8` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
 | `build.s2i.galleonLayers` | A list of layer names to compose a EAP server | - |  [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/getting_started_with_jboss_eap_for_openshift_container_platform/index) |
 | `build.s2i.galleonDir` | Directory relative to the root directory for the build that contains custom content for Galleon. | - | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/getting_started_with_jboss_eap_for_openshift_container_platform/index) - since EAP 7.4|
 | `build.s2i.featurePacks` | List of additional Galleon feature-packs identified by Maven coordinates (`<groupId>:<artifactId>:<version>`) | - | The value can be be either a `string` with a list of comma-separated Maven coordinate or an array where each item is the Maven coordinate of a feature pack - [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/getting_started_with_jboss_eap_for_openshift_container_platform/index) - since EAP 7.4|
