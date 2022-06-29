@@ -2,7 +2,7 @@ apiVersion: v2
 name: eap8
 description: Build and Deploy EAP 8 applications on OpenShift
 type: application
-version: 1.0.3
+version: 1.0.0-beta.0
 
 dependencies:
 - name: wildfly-common
