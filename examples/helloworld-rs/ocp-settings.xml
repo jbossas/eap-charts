@@ -20,6 +20,8 @@
                     <id>redhat-ga-repository</id>
                     <url>https://maven.repository.redhat.com/ga/</url>
                 </repository>
+
+                https://repository.jboss.org/nexus/content/repositories/public/
             </repositories>
             <pluginRepositories>
                 <pluginRepository>

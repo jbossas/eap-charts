@@ -7,52 +7,99 @@
 
 ## Prerequisites
 
-### EAP S2I Images
+Until EAP 8 is released, the Helm Charts needs some prerequisites to use unreleased Maven repository and S2I images.
 
-When S2I is used to build EAP applications, the EAP images must be pulled from Red Hat Container Registry and a pull secret must be create to connect to this registry.
+### Add EAP 8 Maven repository Docker image in OpenShift
 
-You will need to create a pull secret if you pull the EAP S2I builder image. Use the following command as a reference to create your pull secret:
+Follow the instructions at https://github.com/jbossas/eap-charts/wiki/Build-with-unreleased-EAP-Maven-Repository
 
-[source,options="nowrap"]
+## Add unreleased S2I images in OpenShift
+
+Follow the instructions at https://github.com/jbossas/eap-charts/wiki/Build-with-unreleased-EAP-S2I-images
+
+## Add A ConfigMap for the Maven settings.xml
+
+If you are not able to modify the application code to add a `ocp-settings.xml` to provision EAP 8, you need to create a ConfigMap that contains that file and inject it during S2I build
+
+ocp-setting.xml
+[source,xml]
 ----
-$ oc create secret docker-registry eap-pull-secret --docker-server=registry.redhat.io --docker-username=$USERNAME --docker-password=$PASSWORD --docker-email=$EMAIL
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <profiles>
+        <!-- Configure the JBoss EAP Maven repository -->
+        <profile>
+            <id>jboss-eap-repository</id>
+            <repositories>
+                <repository>
+                    <id>jboss-eap-repository</id>
+                    <url>file:///tmp/src/eap-maven-repo/maven-repository</url>
+                </repository>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2/</url>
+                </repository>
+                <repository>
+                    <id>redhat-ga-repository</id>
+                    <url>https://maven.repository.redhat.com/ga/</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>jboss-eap-plugin-repository</id>
+                    <url>file:///tmp/src/eap-maven-repo/maven-repository</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2/</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>redhat-ga-repository</id>
+                    <url>https://maven.repository.redhat.com/ga/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>jboss-eap-repository</activeProfile>
+    </activeProfiles>
+</settings>
 ----
 
-This `eap-pull-secret` is passed to OpenShift using the `build.s2i.pullSecret` configuration in the example:
+Create a `eap-maven-settings` ConfigMap that contains this file:
 
-[source,yaml,options="nowrap"]
+[source,bash]
 ----
-build:
-  pullSecret: eap-pull-secret
+oc create configmap eap-maven-settings --from-file=settings.xml=./ocp-settings.xml
 ----
-
 
 ## Build and Deploy the Application
 
-### JDK Version
-
-You can specify which version of EAP 8 images you want to use with the configuration `build.s2i.jdk` which accepts either `"11"` or `"17"`:
-
-[source,yaml,options="nowrap"]
-----
-build:
-  s2i:
-    jdk: "11"
-----
-
-### Deploy a JAX-RS application on EAP 8 with S2I
-
-The `my-app-s2i.yaml` contains a Helm Chart that will install the https://github.com/jboss-developer/jboss-eap-quickstarts.git[helloword-rs] quickstart on EAP 8 with OpenJDK11.
-
-EAP 8 is provisioned with the `jaxrs-server` layer which contains all that is needed to run this quickstart.
+You can deploy the application using the `helm` tool:
 
 [source,options="nowrap"]
 ----
-$ helm install helloworld-rs-app -f examples/eap8/helloworld-rs/helloworld-rs-app.yaml ./charts/eap8
+$ helm install eap8-app \
+  -f ./helm.yaml \
+  -f ./eap8-dev.yaml \
+  --repo https://jmesnil.github.io/eap-charts/ eap8
 LAST DEPLOYED: Mon Feb 15 16:39:26 2021
 ...
 STATUS: deployed
 REVISION: 1
+----
+
+You also need to patch the BuildConfig to use the `eap-maven-settings` configmap
+and trigger a new build to take into account the patch
+
+[source,bash]
+----
+oc patch buildconfig eap8-app-build-artifacts --patch-file ./eap-mvn-settings-patch.yaml
+oc start-build eap8-app-build-artifacts
 ----
 
 Let's wait for the application to be built and deployed:
@@ -81,5 +128,3 @@ The application can be deleted by running the command:
 $ helm delete helloworld-rs-app
 release "helloworld-rs-app" uninstalled
 ----
-
-
