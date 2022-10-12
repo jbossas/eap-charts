@@ -8,7 +8,7 @@ spec:
   strategy:
     sourceStrategy:
       from:
-        kind: {{ .Values.build.s2i.kind }}
+        kind: {{ .Values.build.s2i.builderKind | default .Values.build.s2i.kind }}
         name: {{ include "eap8.eapBuilderImage" . }}
       env:
       - name: CUSTOM_INSTALL_DIRECTORIES

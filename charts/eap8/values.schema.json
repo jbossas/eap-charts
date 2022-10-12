@@ -43,6 +43,10 @@
                   "description": "Context directory within your Git repo to use as the root for the build",
                   "type": ["string", "null"]
               },
+              "sourceSecret": {
+                "description": "Name of the Secret to use when cloning Git source project",
+                "type": ["string", "null"]
+              },
               "pullSecret": {
                 "description": "Name of the Pull Secret",
                 "type": ["string", "null"]
@@ -218,75 +222,90 @@
                   }
               },
               "s2i": {
-                "description": "Configuration specific to S2I Build (applicable only if build mode is set to s2i)",
-                "type": ["object", "null"],
-                "properties": {
-                  "kind": {
-                    "description": "Determines the type of images for S2I Builder and Runtime images",
-                    "type": "string",
-                    "enum": ["ImageStreamTag", "DockerImage", "ImageStreamImage"],
-                    "default": "DockerImage"
-                  },
-                  "jdk": {
-                    "description": "JDK Version of the EAP S2I images",
-                    "type": "string",
-                    "enum": ["11", "17"],
-                    "default": "11"
-                  },
-                  "jdk11": {
-                    "description": "EAP S2I images for JDK 11",
-                    "type": "object",
-                    "properties": {
-                      "builderImage": {
-                        "description": "EAP S2I Builder image for JDK 8",
-                        "type": "string"
+                  "description": "Configuration specific to S2I Build (applicable only if build mode is set to s2i)",
+                  "type": ["object", "null"],
+                  "properties": {
+                      "kind": {
+                        "description": "Determines the type of images for S2I Builder and Runtime images",
+                        "type": "string",
+                        "enum": ["ImageStreamTag", "DockerImage", "ImageStreamImage"],
+                        "default": "DockerImage"
                       },
-                      "runtimeImage": {
-                        "description": "EAP S2I Runtime image for JDK 8",
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "jdk17": {
-                    "description": "EAP S2I images for JDK 17",
-                    "type": "object",
-                    "properties": {
-                      "builderImage": {
-                        "description": "EAP S2I Builder image for JDK 17",
-                        "type": "string"
+                      "jdk": {
+                        "description": "JDK Version of the EAP S2I images",
+                        "type": "string",
+                        "enum": ["11", "17"],
+                        "default": "11"
                       },
-                      "runtimeImage": {
-                        "description": "EAP S2I Runtime image for JDK 17",
-                        "type": "string"
+                      "jdk11": {
+                        "description": "EAP S2I images for JDK 11",
+                        "type": "object",
+                        "properties": {
+                          "builderImage": {
+                            "description": "EAP S2I Builder image for JDK 11",
+                            "type": "string"
+                          },
+                          "runtimeImage": {
+                            "description": "EAP S2I Runtime image for JDK 11",
+                            "type": "string"
+                          }
                         }
-                      }    
-                    },
-                  "featurePacks": {
-                    "description": "List of Galleon feature-packs identified by Maven coordinates (`<groupId>:<artifactId>[:<version>]`). Deprecated, the recommended way to provision EAP is to use the eap-maven-plugin in the application pom.xml",
-                    "type": ["string", "array", "null"],
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "galleonDir": {
-                    "description": "Directory relative to the root directory for the build that contains custom content for Galleon.",
-                    "type": ["string", "null"]
-                  },
-                  "galleonLayers": {
-                    "description": "List of Galleon Layers to provision. If galleonLayers are configured, the featurePacks that provides the layers must be specified (including EAP feature pack). Deprecated, the recommended way to provision EAP is to use the eap-maven-plugin in the application pom.xml",
-                    "type": ["string", "array", "null"],
-                    "items": {
-                     "type": "string"
-                    }
-                  },
-                  "channels": {
-                    "description": "List of Channels identified by Maven coordinates (`<groupId>:<artifactId>`). If featurePacks are configured without any versioning, the channels that provides the latest feature packs can be specified. Deprecated, the recommended way to provision EAP is to use the eap-maven-plugin in the application pom.xml",
-                    "type": ["string", "array", "null"],
-                    "items": {
-                     "type": "string"
-                    }
+                      },
+                      "jdk17": {
+                        "description": "EAP S2I images for JDK 17",
+                        "type": "object",
+                        "properties": {
+                          "builderImage": {
+                            "description": "EAP S2I Builder image for JDK 17",
+                            "type": "string"
+                          },
+                          "runtimeImage": {
+                            "description": "EAP S2I Runtime image for JDK 17",
+                            "type": "string"
+                            }
+                          }
+                        },
+                      "buildApplicationImage": {
+                        "description": "Determine if the application image must be built. If false, the Helm release will  build the first artifact image (with the name of the Helm release)",
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "builderKind": {
+                        "description": "Determines the type of images for S2I Builder image. If omitted, the value of the kind properties is used",
+                        "type":  ["string", "null"],
+                        "enum": ["ImageStreamTag", "DockerImage", "ImageStreamImage"]
+                      },
+                      "runtimeKind": {
+                        "description": "Determines the type of images for S2I Runtime image. If omitted, the value of the kind properties is used",
+                        "type":  ["string", "null"],
+                        "enum": ["ImageStreamTag", "DockerImage", "ImageStreamImage"]
+                      },
+                      "featurePacks": {
+                        "description": "List of Galleon feature-packs identified by Maven coordinates (`<groupId>:<artifactId>:<version>`). Deprecated, the recommended way to provision EAP is to use the eap-maven-plugin in the application pom.xml",
+                        "type": ["string", "array", "null"],
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "galleonDir": {
+                        "description": "Directory relative to the root directory for the build that contains custom content for Galleon.",
+                        "type": ["string", "null"]
+                      },
+                      "galleonLayers": {
+                          "description": "List of Galleon Layers to provision. If galleonLayers are configured, the featurePacks that provides the layers must be specified (including EAP feature pack). Deprecated, the recommended way to provision EAP is to use the eap-maven-plugin in the application pom.xml",
+                          "type": ["string", "array", "null"],
+                          "items": {
+                            "type": "string"
+                          }
+                      },
+                      "channels": {
+                        "description": "List of Channels identified by Maven coordinates (`<groupId>:<artifactId>`). If featurePacks are configured without any versioning, the channels that provides the latest feature packs can be specified. Deprecated, the recommended way to provision EAP is to use the eap-maven-plugin in the application pom.xml",
+                        "type": ["string", "array", "null"],
+                        "items": {
+                         "type": "string"
+                        }
+                      }
                   }
-                }
               }
           }
       },
@@ -607,6 +626,20 @@
               "extraContainers": {
                 "description": "Freeform array of extra containers",
                 "type": [ "array", "null"]
+              },
+              "imagePullSecrets:": {
+                "description": "ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling the application image",
+                "type": [ "array", "null"],
+                "items": {
+                  "description": "Reference to a secret in the same namespace.",
+                  "required": ["name"],
+                  "properties": {
+                    "name": {
+                      "description": "Name of the referenced secret",
+                      "type": "string"
+                    }
+                  }
+                }
               }
           }
       }

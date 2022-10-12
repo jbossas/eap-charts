@@ -1,22 +1,18 @@
 # eap-charts
 Helm Charts for Red Hat JBoss Enterprise Application Platform 8 (EAP 8)
 
-## Prerequisites
-Below are prerequisites that may apply to your use case.
+## Install Helm Repository for WildFly Charts
 
-### Pull Secret
-You will need to create a pull secret if you pull the EAP S2I builder image. Use the following command as a reference to create your pull secret:
-```bash
-oc create secret docker-registry my-pull-secret --docker-server=registry.redhat.io --docker-username=$USERNAME --docker-password=$PASSWORD --docker-email=$EMAIL
+The `eap8` Chart can be installed from the [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/) repository
+
 ```
+$ helm repo add jboss https://jbossas.github.io/eap-charts/
+"jboss" has been added to your repositories
+$ helm search repo jboss
+NAME                    CHART VERSION   APP VERSION     DESCRIPTION
+jboss/eap8            	1.0.0-beta.0       	           	Build and deploy EAP 8 applications on OpenShift
+````
 
-You can use this secret by passing `--set build.pullSecret=my-pull-secret` to `helm install`, or you can configure this in a values file:
-```yaml
-build:
-  pullSecret: my-pull-secret
-```
-and apply by passing `-f $VALUES_FILE`.
+## EAP8 Charts docs
 
-# Examples
-
-The [examples](./examples/) directory contains examples of EAP applications deployed with Helm Charts
+* A complete documentation of the `eap8` Chart is available in [charts/eap8/](./charts/eap8/README.md).

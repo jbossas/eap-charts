@@ -13,6 +13,6 @@ spec:
   strategy:
     dockerStrategy:
       from:
-        kind: {{ .Values.build.s2i.kind }}
+        kind: {{ .Values.build.s2i.runtimeKind | default .Values.build.s2i.kind }}
         name: {{ include "eap8.eapRuntimeImage" .}}
 {{- end -}}
