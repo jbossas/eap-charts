@@ -8,6 +8,7 @@ build:
   enabled: true
   mode: s2i
   s2i:
+    buildApplicationImage: true
     kind: DockerImage
     jdk: "11"
     jdk11:
