@@ -277,7 +277,7 @@
                           }
                         },
                         "featurePacks": {
-                          "description": "List of additional Galleon feature-packs identified by Maven coordinates (`<groupId>:<artifactId>:<version>`)",
+                          "description": "List of additional Galleon feature-packs identified by Maven coordinates (`&lt;groupId&gt;:&lt;artifactId&gt;:&lt;version&gt;`)",
                           "type": ["string", "array", "null"],
                           "items": {
                             "type": "string"
