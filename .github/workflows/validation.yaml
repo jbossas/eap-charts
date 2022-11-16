@@ -13,18 +13,15 @@ jobs:
   validate-files:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Validate schema and examples
         uses: stefanprodan/kube-tools@v1
         with:
           command: |
+            shopt -s globstar
             echo "Check JSON schema"
-            cat charts/eap74/values.schema.json | jq > /dev/null
+            cat charts/eap8/values.schema.json | jq > /dev/null
 
             echo "Check Yaml Examples"
             shopt -s globstar
-            for f in examples/**/*.yaml; do # Whitespace-safe and recursive
-              echo -n "$f"
-              yq validate $f
-              echo "...✅"
-            done
+            yq eval-all 'true' examples/**/*.yaml > /dev/null

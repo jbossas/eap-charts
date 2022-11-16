@@ -1,0 +1,18 @@
+{{- if and .Values.build.enabled (eq .Values.build.mode "s2i") }}
+{{- include "wildfly-common.buildconfig-s2i" (list . "eap8.buildconfig-s2i") -}}
+{{- end -}}
+
+{{- define "eap8.buildconfig-s2i" -}}
+{{ include "eap8.metadata.labels" . }}
+spec:
+  source:
+    dockerfile: |-
+      FROM {{ include "eap8.eapRuntimeImage" . }}
+      COPY --chown=jboss:root /server $JBOSS_HOME
+      RUN chmod -R ug+rwX $JBOSS_HOME
+  strategy:
+    dockerStrategy:
+      from:
+        kind: {{ .Values.build.s2i.runtimeKind | default .Values.build.s2i.kind }}
+        name: {{ include "eap8.eapRuntimeImage" .}}
+{{- end -}}

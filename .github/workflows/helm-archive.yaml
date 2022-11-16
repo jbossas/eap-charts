@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Helm Chart Archive
+
+on: [push, pull_request]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.4.0
+
+      - name: Create the Helm Package
+        run: |
+          rm -rf .helm-package
+          mkdir .helm-package
+          helm package charts/* -u -d .helm-package
+
+      - name: Upload the Helm package
+        uses: actions/upload-artifact@v3
+        with:
+          name: helm.tgz
+          path: .helm-package/*.tgz 
