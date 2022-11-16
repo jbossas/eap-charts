@@ -2,7 +2,7 @@ apiVersion: v2
 name: eap8
 description: Build and deploy JBoss EAP 8 applications on OpenShift
 type: application
-version: 1.0.0-beta.1
+version: 1.0.0-beta
 
 kubeVersion: ">= 1.19.0-0"
 home: https://www.redhat.com/en/technologies/jboss-middleware/application-platform
