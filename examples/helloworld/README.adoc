@@ -1,3 +1,3 @@
 # Deploy EAP applications on OpenShift with Helm Charts
 
-The `helm.yaml` contains a Helm Chart that will build and deployt EAP 8's https://github.com/jboss-developer/jboss-eap-quickstarts.git[helloword] quickstart on OpenShift.
+The `helm.yaml` contains a Helm Chart that will build and deploy EAP 8's https://github.com/jboss-developer/jboss-eap-quickstarts.git[helloword] quickstart on OpenShift.
