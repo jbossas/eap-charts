@@ -1,6 +1,0 @@
-spec:
-  source:
-    configMaps:
-      - configMap:
-          name: eap-maven-settings
-        destinationDir: /tmp/src/galleon
