@@ -39,11 +39,11 @@ app.openshift.io/runtime: eap
 
 {{- define "eap8.metering.labels" -}}
 com.company: "Red_Hat"
-com.redhat.product-name: "Red_Hat_Runtimes"
-com.redhat.product-version: "2023-Q1"
-com.redhat.component-name: EAP
-com.redhat.component-version: "8.0"
-com.redhat.component-type: application
+rht.prod_name: "Red_Hat_Runtimes"
+rht.prod_ver: "2023-Q1"
+rht.comp: "EAP"
+rht.comp_ver: "8.0"
+rht.subcomp_t: "application"
 {{- end }}
 
 {{- define "eap8.metadata.labels" -}}
