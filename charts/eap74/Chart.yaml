@@ -1,10 +1,14 @@
 apiVersion: v2
 name: eap74
-description: Build and Deploy EAP 7.4 applications on OpenShift
+description: Build and Deploy JBoss EAP 7.4 applications on OpenShift
 type: application
 version: 1.1.0
 
 appVersion: "7.4"
+
+annotations:
+  charts.openshift.io/name: JBoss EAP 7.4
+  charts.openshift.io/supportURL: https://access.redhat.com/support
 
 dependencies:
 - name: wildfly-common
