@@ -1,3 +1,0 @@
-{{- if (and .Values.deploy.enabled .Values.deploy.route.enabled) }}
-{{- include "wildfly-common.route" (list . "eap-xp3.metadata.labels") -}}
-{{- end -}}

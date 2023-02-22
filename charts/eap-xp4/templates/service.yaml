@@ -1,5 +1,0 @@
-{{- if .Values.deploy.enabled }}
-{{- include "wildfly-common.service.http" (list . "eap-xp4.metadata.labels") }}
----
-{{- include "wildfly-common.service.ping" (list . "eap-xp4.metadata.labels") }}
-{{- end -}}
