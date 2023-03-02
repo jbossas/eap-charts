@@ -63,8 +63,8 @@ The configuration to build the application image is configured in a `build` sect
 | Value | Description | Default | Additional Information |
 | ----- | ----------- | ------- | ---------------------- |
 | `build.enabled` | Determines if build-related resources should be created. | `true` | Set this to `false` if you want to deploy a previously built image. Leave this set to `true` if you want to build and deploy a new image. |
-| `build.uri` | Git URI that references your git repo | &lt;required&gt; | Be sure to specify this to build the application. |
-| `build.ref` | Git ref containing the application you want to build | `main` | - |
+| `build.uri` | (**required**) Git URI that references your git repo | https://github.com/jboss-eap-up-and-running/eap7-getting-started | Be sure to specify this to build your own application. |
+| `build.ref` | Git ref containing the application you want to build | - | - |
 | `build.contextDir` | The sub-directory where the application source code exists | - | - |
 | `build.output.kind`|	Determines if the image will be pushed to an `ImageStreamTag` or a `DockerImage` | `ImageStreamTag` | [OpenShift Documentation](https://docs.openshift.com/container-platform/4.6/builds/managing-build-output.html) |
 | `build.output.pushSecret` | Push secret name | - | The secret must exist in the same namespace or the chart will fail to install - Used only if `build.output.kind` is `DockerImage` |

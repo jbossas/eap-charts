@@ -5,6 +5,7 @@
 image:
   tag: latest
 build:
+  uri: https://github.com/jboss-eap-up-and-running/eap7-getting-started
   enabled: true
   mode: s2i
   s2i:
