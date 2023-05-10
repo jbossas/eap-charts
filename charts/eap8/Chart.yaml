@@ -19,7 +19,7 @@ annotations:
 
 dependencies:
 - name: wildfly-common
-  version: 2.1.0
+  version: 2.1.1
   repository: https://docs.wildfly.org/wildfly-charts/
   # for local development
   #repository: file://../../../wildfly-charts/charts/wildfly-common
