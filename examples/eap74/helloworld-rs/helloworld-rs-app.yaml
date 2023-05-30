@@ -3,7 +3,7 @@ build:
   ref: EAP_7.4.0.GA
   pullSecret: eap-pull-secret
   s2i:
-    jdk: "11"
+    jdk: "17"
     galleonLayers:
       - jaxrs-server
   env:

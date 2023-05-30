@@ -31,7 +31,7 @@ build:
 
 ### JDK Version
 
-You can specify which version of EAP 7.4 images you want to use with the configuration `build.s2i.jdk` which accepts either `"8"` or `"11"`:
+You can specify which version of EAP 7.4 images you want to use with the configuration `build.s2i.jdk` which accepts either `"8"`, `"11"` or `"17"`:
 
 [source,yaml,options="nowrap"]
 ----
