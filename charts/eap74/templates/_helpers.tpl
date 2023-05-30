@@ -10,8 +10,10 @@ to get the proper S2I images (and validate that only jdk11 can be used with Z & 
 {{- define "eap74.eapBuilderImage" -}}
 {{- if eq .Values.build.s2i.jdk "8"  -}}
 {{ .Values.build.s2i.amd64.jdk8.builderImage}}:{{ include "eap74.version" . }}
-{{- else -}}
+{{- else if eq .Values.build.s2i.jdk "11" -}}
 {{ .Values.build.s2i.amd64.jdk11.builderImage}}:{{ include "eap74.version" . }}
+{{- else -}}
+{{ .Values.build.s2i.amd64.jdk17.builderImage}}:{{ include "eap74.version" . }}
 {{- end -}}
 {{- end -}}
 
@@ -22,8 +24,10 @@ It depends on the build.s2i.jdkVersion.
 {{- define "eap74.eapRuntimeImage" -}}
 {{- if eq .Values.build.s2i.jdk "8"  -}}
 {{ .Values.build.s2i.amd64.jdk8.runtimeImage}}:{{ include "eap74.version" . }}
-{{- else -}}
+{{- else if eq .Values.build.s2i.jdk "11" -}}
 {{ .Values.build.s2i.amd64.jdk11.runtimeImage}}:{{ include "eap74.version" . }}
+{{- else -}}
+{{ .Values.build.s2i.amd64.jdk17.runtimeImage}}:{{ include "eap74.version" . }}
 {{- end -}}
 {{- end -}}
 
