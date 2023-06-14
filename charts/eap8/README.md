@@ -2,7 +2,7 @@
 
 A Helm chart for building and deploying a [JBoss EAP 8](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) application on OpenShift.
 
-## The Helm Chart for EAP 8 Beta is a Technology Preview feature only.
+## The Helm Chart for EAP 8 is a Technology Preview feature only.
 
  Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during thedevelopment process. For more information, see [Technology Preview Features Support Scope](https://access.redhat.com/support/offerings/techpreview/).
 
@@ -132,7 +132,7 @@ If the application image has been built by another mechanism, you can skip the b
 | `build.output.kind`|	Determines if the image will be pushed to an `ImageStreamTag` or a `DockerImage` | `ImageStreamTag` | [OKD API documentation](https://docs.okd.io/latest/rest_api/workloads_apis/buildconfig-build-openshift-io-v1.html#spec-output) |
 | `build.output.pushSecret` | Name of the push secret | - | The secret must exist in the same namespace or the chart will fail to install - Used only if `build.output.kind` is `DockerImage` |
 | `build.pullSecret` | Name of the pull secret | - | The secret must exist in the same namespace or the chart will fail to install - [OKD API documentation](https://docs.okd.io/latest/rest_api/workloads_apis/buildconfig-build-openshift-io-v1.html#spec-strategy-sourcestrategy) |
-| `build.ref` | Git ref containing the application you want to build | `main` | - |
+| `build.ref` | Git reference (branch, tag, or commit) containing the application you want to build. If unspecified, the default branch from the Git repository is used. | - | - |
 | `build.resources` | Freeform `resources` items | - | [Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) |
 | `build.s2i` | Configuration specific to building with EAP S2I images | - | - |
 | `build.s2i.buildApplicationImage` | Whether the application image is built. If `false` the Helm release will only create the builder image (and name it from the Helm release) | `true` | - |
@@ -149,7 +149,7 @@ If the application image has been built by another mechanism, you can skip the b
 | `build.sourceSecret`|Name of the secret containing the credentials to login to Git source reposiory | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/creating-build-inputs.html#builds-manually-add-source-clone-secrets_creating-build-inputs) |
 | `build.triggers.genericSecret`| Name of the secret containing the WebHookSecretKey for the Generic Webhook | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html) |
 | `build.triggers.githubSecret`| Name of the secret containing the WebHookSecretKey for the GitHub Webhook | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html) |
-| `build.uri` | Git URI that references your git repo | &lt;required&gt; | Be sure to specify this to build the application. |
+| `build.uri` | (**required**) Git URI that references your Git repository | https://github.com/jboss-eap-up-and-running/eap8-getting-started | Be sure to specify this to build your own application. |
 
 ### Provisioning Jboss EAP With S2I.
 

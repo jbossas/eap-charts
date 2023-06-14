@@ -15,6 +15,7 @@ icon: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9z
 
 annotations:
   charts.openshift.io/name: JBoss EAP 8
+  charts.openshift.io/supportURL: https://access.redhat.com/support
   charts.openshift.io/provider: Red Hat
 
 dependencies:
