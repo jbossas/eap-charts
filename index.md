@@ -24,7 +24,7 @@ We can build and deploy the [helloworld-rs quickstart](https://github.com/jboss-
 
 ```
 $ helm install helloworld-rs-app \
-    -f https://raw.githubusercontent.com/jbossas/eap-charts/main/examples/eap74/helloworld-rs/helloworld-rs-app.yaml \
+    -f https://raw.githubusercontent.com/jbossas/eap-charts/eap74/examples/eap74/helloworld-rs/helloworld-rs-app.yaml \
     jboss-eap/eap74
 NAME: helloworld-rs-app
 LAST DEPLOYED: Tue Mar  9 11:57:33 2021
