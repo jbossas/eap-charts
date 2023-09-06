@@ -3,6 +3,6 @@
 
 {{- if eq .Values.build.mode "s2i" }}
 ---
-{{- include "wildfly-common.imagestream-s2i-build-artifacts" (list . "eap-xp4.metadata.labels") }}
+{{ include "wildfly-common.imagestream-s2i-build-artifacts" (list . "eap-xp4.metadata.labels") }}
 {{- end -}}
 {{- end -}}
