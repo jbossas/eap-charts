@@ -2,11 +2,14 @@
 {{/*
 eap-xp4.eapBuilderImage corresponds to the imagestream for the EAP S2I Builder image.
 It depends on the build.s2i.jdkVersion.
-For now, we do not need to do anything as the only support version is 11 but when we support JDK 17, 
-we will have to check build.s2i.jdkVersion to determin the proper image.
+For now, we support versions 11 and 17.
 */}}
 {{- define "eap-xp4.eapBuilderImage" -}}
+{{- if eq .Values.build.s2i.jdk "11"  -}}
 {{ .Values.build.s2i.jdk11.builderImage}}:{{ include "eap-xp4.version" . }}
+{{- else -}}
+{{ .Values.build.s2i.jdk17.builderImage}}:{{ include "eap-xp4.version" . }}
+{{- end -}}
 {{- end -}}
 
 {{/*
@@ -14,7 +17,11 @@ eap-xp4.eapRuntimeImage corresponds to the imagestream for the EAP S2I Runtime i
 It depends on the build.s2i.jdkVersion.
 */}}
 {{- define "eap-xp4.eapRuntimeImage" -}}
+{{- if eq .Values.build.s2i.jdk "11" -}}
 {{ .Values.build.s2i.jdk11.runtimeImage}}:{{ include "eap-xp4.version" . }}
+{{- else -}}
+{{ .Values.build.s2i.jdk17.runtimeImage}}:{{ include "eap-xp4.version" . }}
+{{- end -}}
 {{- end -}}
 
 {{/*
