@@ -34,4 +34,4 @@ REVISION: 1
 
 # Documentation
 
-A complete documentation of the `eap7` Chart is available in [its README](https://github.com/jbossas/eap-charts/blob/main/charts/eap74/README.md).
+A complete documentation of the `eap7` Chart is available in [its README](https://github.com/jbossas/eap-charts/blob/eap74/charts/eap74/README.md).
