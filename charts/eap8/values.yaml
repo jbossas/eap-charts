@@ -13,8 +13,8 @@ build:
     kind: DockerImage
     jdk: "17"
     jdk17:
-      builderImage: registry.redhat.io/jboss-eap-8-tech-preview/eap8-openjdk17-builder-openshift-rhel8:latest
-      runtimeImage: registry.redhat.io/jboss-eap-8-tech-preview/eap8-openjdk17-runtime-openshift-rhel8:latest
+      builderImage: registry.redhat.io/jboss-eap-8/eap8-openjdk17-builder-openshift-rhel8:latest
+      runtimeImage: registry.redhat.io/jboss-eap-8/eap8-openjdk17-runtime-openshift-rhel8:latest
   output:
     kind: "ImageStreamTag"
   triggers: {}
