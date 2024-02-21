@@ -1,0 +1,9 @@
+build:
+  uri: https://github.com/jbossas/eap-quickstarts.git
+  ref: EAP_XP_5.0.0.GA-dev
+  contextDir: microprofile-config
+  mode: bootable-jar
+deploy:
+  env:
+  - name: CONFIG_PROP
+    value: Hello from OpenShift
