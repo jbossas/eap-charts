@@ -150,12 +150,12 @@ If the application image has been built by another mechanism, you can skip the b
 
 ### Provisioning Jboss EAP With S2I.
 
-The recommended way to provision the JBoss EAP server is to use the `eap-maven-plugin` from the application `pom.xml`.
+The recommended way to provision the JBoss EAP XP5 server is to use the `eap-maven-plugin` from the application `pom.xml`.
 
 The `build.s2i.featurePacks`,`build.s2i.galleonLayers`and `build.s2i.channels` fields have been deprecated as they are no longer necessary with this recommendation.
 
 For backwards compatibility, the EAP S2I Builder image still supports these fields to delegate to the provisioning of the server to the `eap-maven-plugin` if it is not configured in the application `pom.xml`.
-However if `build.s2i.galleonLayers` is set, `build.s2i.featurePacks` _must_ be specified (including EAP own feature pack `org.jboss.eap:wildfly-ee-galleon-pack`).
+However if `build.s2i.galleonLayers` is set, `build.s2i.featurePacks` _must_ be specified (including EAP XP5 feature pack `org.jboss.eap.xp:wildfly-galleon-pack`).
 
 ## Deploying the Application Image
 

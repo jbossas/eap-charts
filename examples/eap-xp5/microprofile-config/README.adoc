@@ -5,7 +5,7 @@
 :idseparator:       -
 :keywords:          openshift,wildfly,microprofile,helm
 
-This example shows how to deploy an Eclipse MicroProfile application with EAP XP 54 on OpenShift.
+This example shows how to deploy an Eclipse MicroProfile application with EAP XP 5 on OpenShift.
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ This environment variable is specified in the `deploy.env` section of the Helm C
 
 ## Installation
 
-The application can be built with Bootable Jar or using WildFly S2I images.
+The application can be built with Bootable Jar or using EAP 8.0 S2I images.
 
 ### Installation with Bootable Jar
 
