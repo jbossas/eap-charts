@@ -35,7 +35,19 @@ REVISION: 1
 
 # Install a Helm Release for JBoss EAP 7.4
 
-We can build and deploy the [helloworld-rs quickstart](https://github.com/jboss-developer/jboss-eap-quickstarts/tree/7.4.x/helloworld-rs) with this [example file](https://raw.githubusercontent.com/jbossas/eap-charts/eap74/examples/eap74/helloworld-rs/helloworld-rs-app.yaml):
+We can build and deploy the EAP 8.0 [helloworld quickstart](https://github.com/jboss-developer/jboss-eap-quickstarts/tree/8/0.x/helloworld) with this [example file](https://raw.githubusercontent.com/jbossas/eap-charts/eap74/examples/eap74/helloworld-rs/helloworld-rs-app.yaml):
+
+```
+$ helm install helloworld-app \
+    -f https://raw.githubusercontent.com/jbossas/eap-charts/eap8/examples/helloworld/helm.yaml \
+    jboss-eap/eap8
+NAME: helloworld-app
+LAST DEPLOYED: Tue May  3 10:24:52 2024
+STATUS: deployed
+REVISION: 1
+```
+
+We can build and deploy the EAP 7.4 [helloworld-rs quickstart](https://github.com/jboss-developer/jboss-eap-quickstarts/tree/7.4.x/helloworld-rs) with this [example file](https://raw.githubusercontent.com/jbossas/eap-charts/eap74/examples/eap74/helloworld-rs/helloworld-rs-app.yaml):
 
 ```
 $ helm install helloworld-rs-app \
