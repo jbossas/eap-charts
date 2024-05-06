@@ -5,9 +5,9 @@
   <a href="https://www.redhat.com/en/technologies/jboss-middleware/application-platform"><img src="https://developers.redhat.com/blog/wp-content/uploads/2020/06/Logo-Red_Hat-JBoss_Enterprise_Application_Platform-B-Standard-RGB.png" alt="JBoss EAP logo" title="EAP" height="90"/></a>
 </p>
 
-# Install Helm Repository for EAP Charts
+# Add the Helm Repository for JBoss EAP Charts
 
-The `eap74` Chart can be installed from [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/)
+The Helm Charts for JBoss EAP  can be installed from [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/)
 
 ```
 $ helm repo add jboss-eap https://jbossas.github.io/eap-charts/
@@ -15,10 +15,25 @@ $ helm repo add jboss-eap https://jbossas.github.io/eap-charts/
 
 $ helm search repo eap
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-jboss-eap/eap74         1.0.0           7.4             A Helm chart to build and deploy EAP 7.4 applic...
-````
+jboss-eap/eap-xp3       1.0.0           3.0             Build and Deploy EAP XP3 applications on OpenShift
+jboss-eap/eap-xp4       1.0.0           4.0             Build and Deploy EAP XP4 applications on OpenShift
+jboss-eap/eap74         1.1.2           7.4             Build and deploy JBoss EAP 7.4 applications on ...
+jboss-eap/eap8          1.1.2           8.0             Build and deploy JBoss EAP 8 applications on Op...
+```
 
-# Install a Helm Release
+# Install a Helm Release for JBoss EAP 8.0
+
+You can build and deploy the [eap8-getting-started](https://github.com/jboss-eap-up-and-running/eap8-getting-started) by installing the `eap8` Helm Chart without modification:
+
+```
+$ helm install eap8-app jboss-eap/eap8
+NAME: eap8-app
+LAST DEPLOYED: Mon May  6 17:42:19 2024
+STATUS: deployed
+REVISION: 1
+```
+
+# Install a Helm Release for JBoss EAP 7.4
 
 We can build and deploy the [helloworld-rs quickstart](https://github.com/jboss-developer/jboss-eap-quickstarts/tree/7.4.x/helloworld-rs) with this [example file](https://raw.githubusercontent.com/jbossas/eap-charts/eap74/examples/eap74/helloworld-rs/helloworld-rs-app.yaml):
 
@@ -34,4 +49,8 @@ REVISION: 1
 
 # Documentation
 
-A complete documentation of the `eap7` Chart is available in [its README](https://github.com/jbossas/eap-charts/blob/eap74/charts/eap74/README.md).
+Documentation for the Helm Charts are available in their respective READMES:
+
+* [JBoss EAP 8.0](https://github.com/jbossas/eap-charts/blob/eap8-dev/charts/eap8/README.md)
+* [JBoss EAP 7.4](https://github.com/jbossas/eap-charts/blob/eap74/charts/eap74/README.md)
+* [JBoss EAP XP4](https://github.com/jbossas/eap-charts/blob/main/charts/eap-xp4/README.md)
