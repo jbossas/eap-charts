@@ -5,7 +5,7 @@ image:
   tag: latest
 build:
   enabled: true
-  mode: bootable-jar
+  mode: s2i
   bootableJar:
     builderImage: registry.access.redhat.com/ubi8/openjdk-17:latest
   s2i:
