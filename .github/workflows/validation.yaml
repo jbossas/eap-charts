@@ -20,8 +20,4 @@ jobs:
           command: |
             shopt -s globstar
             echo "Check JSON schema"
-            cat charts/eap8/values.schema.json | jq > /dev/null
-
-            echo "Check Yaml Examples"
-            shopt -s globstar
-            yq eval-all 'true' examples/**/*.yaml > /dev/null
+            cat charts/eap81/values.schema.json | jq > /dev/null

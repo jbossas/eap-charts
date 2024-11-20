@@ -6,6 +6,8 @@ charts:
   - charts/*
 eap8:
   - charts/eap8/**/*
+eap81:
+  - charts/eap81/**/*
 documentation:
   - ./README.md
   - charts/**/README.md
