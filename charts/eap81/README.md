@@ -1,6 +1,6 @@
-# Helm Chart for EAP 8
+# Helm Chart for EAP 8.1
 
-A Helm chart for building and deploying a [JBoss EAP 8](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) application on OpenShift.
+A Helm chart for building and deploying a [JBoss EAP 8.1](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) application on OpenShift.
 
 ## Building and Deploying Applications
 
@@ -124,7 +124,7 @@ If the application image has been built by another mechanism, you can skip the b
 | `build.enabled` | Determines if build-related resources should be created. | `true` | Set this to `false` if you want to deploy a previously built image. Leave this set to `true` if you want to build and deploy a new image. |
 | `build.env` | Freeform `env` items | - | [Kubernetes documentation](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). These environment variables will be used when the application is _built_. If you need to specify environment variables for the running application, use `deploy.env` instead. |
 | `build.images`| Freeform images injected in the source during S2I build | - | [OKD API documentation](https://docs.okd.io/latest/rest_api/workloads_apis/buildconfig-build-openshift-io-v1.html#spec-source-images-2) |
-| `build.mode` | Determines the mode to build the application image with EAP 8 | `s2i` | Allowed values: `s2i` |
+| `build.mode` | Determines the mode to build the application image with EAP 8.1 | `s2i` | Allowed values: `s2i` |
 | `build.output.kind`|	Determines if the image will be pushed to an `ImageStreamTag` or a `DockerImage` | `ImageStreamTag` | [OKD API documentation](https://docs.okd.io/latest/rest_api/workloads_apis/buildconfig-build-openshift-io-v1.html#spec-output) |
 | `build.output.pushSecret` | Name of the push secret | - | The secret must exist in the same namespace or the chart will fail to install - Used only if `build.output.kind` is `DockerImage` |
 | `build.pullSecret` | Name of the pull secret | - | The secret must exist in the same namespace or the chart will fail to install - [OKD API documentation](https://docs.okd.io/latest/rest_api/workloads_apis/buildconfig-build-openshift-io-v1.html#spec-strategy-sourcestrategy) |
@@ -138,14 +138,14 @@ If the application image has been built by another mechanism, you can skip the b
 | `build.s2i.featurePacks` | List of additional Galleon feature-packs identified by Maven coordinates (`<groupId>:<artifactId>:<version>`) | - | The value can be be either a `string` with a list of comma-separated Maven coordinate or an array where each item is the Maven coordinate of a feature pack - [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/getting_started_with_jboss_eap_for_openshift_container_platform/index) |
 | `build.s2i.channels` | List of Channels identified by Maven coordinates (`<groupId>:<artifactId>`). If featurePacks are configured without any versioning, the channels that provides the latest feature packs can be specified. Deprecated, the recommended way to provision EAP is to use the eap-maven-plugin in the application pom.xml | - | The value can be be either a `string` with a list of comma-separated Maven coordinate or an array where each item is the Maven coordinate of a channel - [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/getting_started_with_jboss_eap_for_openshift_container_platform/index) |
 | `build.s2i.jdk` | JDK Version of the EAP S2I images | `"17"` | Allowed Values: `"17"` |
-| `build.s2i.jdk17.builderImage` | EAP S2I Builder image for JDK 17 | `registry.redhat.io/jboss-eap-8/eap8-openjdk17-builder-openshift-rhel8:latest` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
-| `build.s2i.jdk17.runtimeImage` | EAP S2I Runtime image for JDK 17| `registry.redhat.io/jboss-eap-8/eap8-openjdk17-runtime-openshift-rhel8:latest` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.0/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
+| `build.s2i.jdk17.builderImage` | EAP S2I Builder image for JDK 17 | `registry.redhat.io/jboss-eap-8-tech-preview/eap81-openjdk17-builder-openshift-rhel9:latest` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.1/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
+| `build.s2i.jdk17.runtimeImage` | EAP S2I Runtime image for JDK 17| `registry.redhat.io/jboss-eap-8-tech-preview/eap81-openjdk17-runtime-openshift-rhel9:latest` | [EAP Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.1/html/getting_started_with_jboss_eap_for_openshift_container_platform/index)  |
 | `build.s2i.kind` | Determines the type of images for S2I Builder and Runtime images (`DockerImage`, `ImageStreamTag` or `ImageStreamImage`) | `DockerImage` | [OKD Documentation](https://docs.okd.io/latest/cicd/builds/build-strategies.html#builds-strategy-s2i-build_build-strategies) |
 | `build.s2i.runtimeKind` | Determines the type of images for S2I Runtime image (`DockerImage`, `ImageStreamTag` or `ImageStreamImage`) | the value of `build.s2i.kind` | [OKD Documentation](https://docs.okd.io/latest/cicd/)|
 | `build.sourceSecret`|Name of the secret containing the credentials to login to Git source reposiory | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/creating-build-inputs.html#builds-manually-add-source-clone-secrets_creating-build-inputs) |
 | `build.triggers.genericSecret`| Name of the secret containing the WebHookSecretKey for the Generic Webhook | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html) |
 | `build.triggers.githubSecret`| Name of the secret containing the WebHookSecretKey for the GitHub Webhook | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html) |
-| `build.uri` | (**required**) Git URI that references your Git repository | https://github.com/jboss-eap-up-and-running/eap8-getting-started | Be sure to specify this to build your own application. |
+| `build.uri` | (**required**) Git URI that references your Git repository | https://github.com/jboss-eap-up-and-running/eap81-getting-started | Be sure to specify this to build your own application. |
 
 ### Provisioning Jboss EAP With S2I.
 

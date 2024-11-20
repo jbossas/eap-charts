@@ -5,7 +5,7 @@
 image:
   tag: latest
 build:
-  uri: https://github.com/jboss-eap-up-and-running/eap8-getting-started.git
+  uri: https://github.com/jboss-eap-up-and-running/eap81-getting-started.git
   enabled: true
   mode: s2i
   s2i:
@@ -13,8 +13,8 @@ build:
     kind: DockerImage
     jdk: "17"
     jdk17:
-      builderImage: registry.redhat.io/jboss-eap-8/eap8-openjdk17-builder-openshift-rhel8:latest
-      runtimeImage: registry.redhat.io/jboss-eap-8/eap8-openjdk17-runtime-openshift-rhel8:latest
+      builderImage: registry.redhat.io/jboss-eap-8-tech-preview/eap81-openjdk17-builder-openshift-rhel9:latest
+      runtimeImage: registry.redhat.io/jboss-eap-8-tech-preview/eap81-openjdk17-runtime-openshift-rhel9:latest
   output:
     kind: "ImageStreamTag"
   triggers: {}
