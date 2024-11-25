@@ -15,6 +15,9 @@ build:
     jdk17:
       builderImage: registry.redhat.io/jboss-eap-8/eap8-openjdk17-builder-openshift-rhel8:latest
       runtimeImage: registry.redhat.io/jboss-eap-8/eap8-openjdk17-runtime-openshift-rhel8:latest
+    jdk21:
+      builderImage: registry.redhat.io/jboss-eap-8/eap8-openjdk21-builder-openshift-rhel9:latest
+      runtimeImage: registry.redhat.io/jboss-eap-8/eap8-openjdk21-runtime-openshift-rhel9:latest
   output:
     kind: "ImageStreamTag"
   triggers: {}
