@@ -3,7 +3,7 @@ Helm Charts for Red Hat JBoss Enterprise Application Platform (EAP) 8.1
 
 ## Install Helm Repository for EAP Charts
 
-The `eap8` Chart can be installed from the [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/) repository
+The `eap81` Chart can be installed from the [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/) repository
 
 ```
 $ helm repo add jboss https://jbossas.github.io/eap-charts/
