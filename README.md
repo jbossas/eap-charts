@@ -1,7 +1,7 @@
 # eap-charts
 Helm Charts for Red Hat JBoss Enterprise Application Platform (EAP) 8.1
 
-## Install Helm Repository for WildFly Charts
+## Install Helm Repository for EAP Charts
 
 The `eap8` Chart can be installed from the [https://jbossas.github.io/eap-charts/](https://jbossas.github.io/eap-charts/) repository
 
@@ -10,7 +10,7 @@ $ helm repo add jboss https://jbossas.github.io/eap-charts/
 "jboss" has been added to your repositories
 $ helm search repo jboss
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-jboss/eap81            	1.0.0-beta.0       	           	Build and deploy EAP 8.1 applications on OpenShift
+jboss/eap81            	1.0.0           8.1	           	Build and deploy EAP 8.1 applications on OpenShift
 ````
 
 ## EAP 8.1 Charts docs
