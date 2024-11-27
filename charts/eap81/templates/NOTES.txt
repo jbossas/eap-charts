@@ -1,7 +1,7 @@
 {{- if .Release.IsInstall }}
 
 {{- if .Values.build.enabled }}
-Your EAP 8 application is building! To follow the build, run:
+Your EAP {{ .Chart.AppVersion }} application is building! To follow the build, run:
 
 $ oc get build -w
 
