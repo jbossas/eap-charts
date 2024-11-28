@@ -33,7 +33,6 @@ deploy:
     httpGet:
       path: /health/live
       port: admin
-    initialDelaySeconds: 60
   readinessProbe:
     httpGet:
       path: /health/ready
@@ -41,6 +40,7 @@ deploy:
     initialDelaySeconds: 10
   startupProbe:
     httpGet:
-      path: /health/live
+      path: /health/started
       port: admin
-    initialDelaySeconds: 60
+    initialDelaySeconds: 10
+    failureThreshold: 11
