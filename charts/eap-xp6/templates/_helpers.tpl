@@ -9,6 +9,7 @@ It depends on the build.s2i.jdk version.
 {{- else -}}
 {{ .Values.build.s2i.jdk21.builderImage}}
 {{- end -}}
+{{- end -}}
 
 {{/*
 eap-xp.eapRuntimeImage corresponds to the imagestream for the EAP S2I Runtime image.
@@ -19,6 +20,7 @@ It depends on the build.s2i.jdkVersion.
 {{ .Values.build.s2i.jdk17.runtimeImage}}
 {{- else -}}
 {{ .Values.build.s2i.jdk21.builderImage}}
+{{- end -}}
 {{- end -}}
 
 {{/*
