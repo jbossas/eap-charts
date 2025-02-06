@@ -4,10 +4,10 @@ eap8.eapBuilderImage corresponds to the imagestream for the EAP S2I Builder imag
 It depends on the build.s2i.jdk version.
 */}}
 {{- define "eap8.eapBuilderImage" -}}
-{{- if eq .Values.build.s2i.jdk "11"  -}}
-{{ .Values.build.s2i.jdk11.builderImage}}
-{{- else -}}
+{{- if eq .Values.build.s2i.jdk "17"  -}}
 {{ .Values.build.s2i.jdk17.builderImage}}
+{{- else -}}
+{{ .Values.build.s2i.jdk21.builderImage}}
 {{- end -}}
 {{- end -}}
 
@@ -16,10 +16,10 @@ eap8.eapRuntimeImage corresponds to the imagestream for the EAP S2I Runtime imag
 It depends on the build.s2i.jdkVersion.
 */}}
 {{- define "eap8.eapRuntimeImage" -}}
-{{- if eq .Values.build.s2i.jdk "11"  -}}
-{{ .Values.build.s2i.jdk11.runtimeImage}}
-{{- else -}}
+{{- if eq .Values.build.s2i.jdk "17"  -}}
 {{ .Values.build.s2i.jdk17.runtimeImage}}
+{{- else -}}
+{{ .Values.build.s2i.jdk21.runtimeImage}}
 {{- end -}}
 {{- end -}}
 
