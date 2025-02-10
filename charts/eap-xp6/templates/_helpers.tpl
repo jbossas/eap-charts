@@ -4,7 +4,11 @@ eap-xp.eapBuilderImage corresponds to the imagestream for the EAP S2I Builder im
 It depends on the build.s2i.jdk version.
 */}}
 {{- define "eap-xp.eapBuilderImage" -}}
+{{- if eq .Values.build.s2i.jdk "17"  -}}
 {{ .Values.build.s2i.jdk17.builderImage}}
+{{- else -}}
+{{ .Values.build.s2i.jdk21.builderImage}}
+{{- end -}}
 {{- end -}}
 
 {{/*
@@ -12,7 +16,11 @@ eap-xp.eapRuntimeImage corresponds to the imagestream for the EAP S2I Runtime im
 It depends on the build.s2i.jdkVersion.
 */}}
 {{- define "eap-xp.eapRuntimeImage" -}}
+{{- if eq .Values.build.s2i.jdk "17"  -}}
 {{ .Values.build.s2i.jdk17.runtimeImage}}
+{{- else -}}
+{{ .Values.build.s2i.jdk21.builderImage}}
+{{- end -}}
 {{- end -}}
 
 {{/*
