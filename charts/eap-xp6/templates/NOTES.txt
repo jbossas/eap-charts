@@ -1,7 +1,15 @@
 {{- if .Release.IsInstall }}
 
 {{- if .Values.build.enabled }}
-Your EAP XP 6 application is building! To follow the build, run:
+Your EAP XP 6 application is building!
+
+{{- if eq .Values.build.mode "bootable-jar" }}
+
+It is building a Bootable Jar that is deprecated and may be removed in future versions of this chart.
+
+{{- end }}
+
+To follow the build, run:
 
 $ oc get build -w
 
