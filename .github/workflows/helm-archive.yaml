@@ -30,7 +30,7 @@ jobs:
           helm package charts/* -u -d .helm-package
 
       - name: Upload the Helm package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: helm.tgz
           path: .helm-package/*.tgz 
