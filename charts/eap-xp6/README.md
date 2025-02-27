@@ -148,7 +148,7 @@ If the application image has been built by another mechanism, you can skip the b
 | `build.sourceSecret`|Name of the secret containing the credentials to login to Git source reposiory | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/creating-build-inputs.html#builds-manually-add-source-clone-secrets_creating-build-inputs) |
 | `build.triggers.genericSecret`| Name of the secret containing the WebHookSecretKey for the Generic Webhook | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html) |
 | `build.triggers.githubSecret`| Name of the secret containing the WebHookSecretKey for the GitHub Webhook | - | The secret must exist in the same namespace or the chart will fail to install - [OKD documentation](https://docs.okd.io/latest/cicd/builds/triggering-builds-build-hooks.html) |
-| `build.uri` | (**required**) Git URI that references your Git repository | - | Be sure to specify this to build your own application. |
+| `build.uri` | (**required**) Git URI that references your Git repository | https://github.com/jboss-eap-up-and-running/eap-xp6-getting-started | Be sure to specify this to build your own application. |
 
 ### Provisioning Jboss EAP With S2I.
 
