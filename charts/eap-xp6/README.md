@@ -45,6 +45,11 @@ build:
       value: "-P my-profile"
 ```
 
+### Building with Bootable JAR
+
+By default, this chart builds the EAP application with Bootable JAR (based on the `build.mode` field).
+Please note that this mode is __deprecated__ and may be removed in future versions of the Chart.
+
 
 ## Pull an existing Application Image
 
@@ -125,7 +130,7 @@ If the application image has been built by another mechanism, you can skip the b
 | `build.enabled` | Determines if build-related resources should be created. | `true` | Set this to `false` if you want to deploy a previously built image. Leave this set to `true` if you want to build and deploy a new image. |
 | `build.env` | Freeform `env` items | - | [Kubernetes documentation](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). These environment variables will be used when the application is _built_. If you need to specify environment variables for the running application, use `deploy.env` instead. |
 | `build.images`| Freeform images injected in the source during S2I build | - | [OKD API documentation](https://docs.okd.io/latest/rest_api/workloads_apis/buildconfig-build-openshift-io-v1.html#spec-source-images-2) |
-| `build.mode` | Determines the mode to build the application image with EAP XP 6 | `bootable-jar` | Allowed values: `s2i, bootable-jar` |
+| `build.mode` | Determines the mode to build the application image with EAP XP 6. `bootable-jar` is deprecated and may be removed in future versions of this chart | `bootable-jar` | Allowed values: `s2i, bootable-jar` |
 | `build.output.kind`|	Determines if the image will be pushed to an `ImageStreamTag` or a `DockerImage` | `ImageStreamTag` | [OKD API documentation](https://docs.okd.io/latest/rest_api/workloads_apis/buildconfig-build-openshift-io-v1.html#spec-output) |
 | `build.output.pushSecret` | Name of the push secret | - | The secret must exist in the same namespace or the chart will fail to install - Used only if `build.output.kind` is `DockerImage` |
 | `build.pullSecret` | Name of the pull secret | - | The secret must exist in the same namespace or the chart will fail to install - [OKD API documentation](https://docs.okd.io/latest/rest_api/workloads_apis/buildconfig-build-openshift-io-v1.html#spec-strategy-sourcestrategy) |
