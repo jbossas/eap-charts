@@ -120,7 +120,7 @@ If the application image has been built by another mechanism, you can skip the b
 
 | Value | Description | Default | Additional Information |
 | ----- | ----------- | ------- | ---------------------- |
-| `build.bootableJar.builderImage` | JDK Builder image for Bootable Jar | `registry.access.redhat.com/ubi8/openjdk-17:latest` | - |
+| `build.bootableJar.builderImage` | JDK Builder image for Bootable Jar | `registry.access.redhat.com/ubi9/openjdk-17:latest` | - |
 | `build.contextDir` | The sub-directory where the application source code exists | - | - |
 | `build.enabled` | Determines if build-related resources should be created. | `true` | Set this to `false` if you want to deploy a previously built image. Leave this set to `true` if you want to build and deploy a new image. |
 | `build.env` | Freeform `env` items | - | [Kubernetes documentation](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). These environment variables will be used when the application is _built_. If you need to specify environment variables for the running application, use `deploy.env` instead. |

@@ -8,7 +8,7 @@ build:
   uri: https://github.com/jboss-eap-up-and-running/eap-xp6-getting-started.git
   mode: bootable-jar
   bootableJar:
-    builderImage: registry.access.redhat.com/ubi8/openjdk-17:latest
+    builderImage: registry.access.redhat.com/ubi9/openjdk-17:latest
   s2i:
     buildApplicationImage: true
     kind: DockerImage
