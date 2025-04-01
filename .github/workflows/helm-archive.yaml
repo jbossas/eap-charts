@@ -28,9 +28,10 @@ jobs:
           rm -rf .helm-package
           mkdir .helm-package
           helm package charts/* -u -d .helm-package
+          ls -l .helm-package
 
       - name: Upload the Helm package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: helm.tgz
-          path: .helm-package/*.tgz 
+          path: .helm-package/*
