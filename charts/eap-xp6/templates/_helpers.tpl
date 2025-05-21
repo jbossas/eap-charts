@@ -40,7 +40,7 @@ app.openshift.io/runtime: eap
 {{- define "eap-xp.metering.labels" -}}
 com.company: "Red_Hat"
 rht.prod_name: "Red_Hat_Runtimes"
-rht.prod_ver: "2025-Q1"
+rht.prod_ver: "2025-Q3"
 rht.comp: "EAP_XP"
 rht.comp_ver: {{ quote .Chart.AppVersion }}
 rht.subcomp_t: "application"
