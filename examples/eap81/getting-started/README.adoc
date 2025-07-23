@@ -3,7 +3,7 @@
 :icons:             font
 :idprefix:
 :idseparator:       -
-:keywords:          openshift,wildfly,microprofile,helm
+:keywords:          openshift,wildfly,helm
 
 This example shows how to deploy a Java application with EAP 8.1 on OpenShift.
 
