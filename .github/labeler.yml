@@ -4,10 +4,8 @@ examples:
   - examples/*
 charts:
   - charts/*
-eap8:
-  - charts/eap8/**/*
-eap81:
-  - charts/eap81/**/*
+eap82:
+  - charts/eap82/**/*
 documentation:
   - ./README.md
   - charts/**/README.md

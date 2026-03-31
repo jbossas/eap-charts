@@ -4,10 +4,10 @@ eap8.eapBuilderImage corresponds to the imagestream for the EAP S2I Builder imag
 It depends on the build.s2i.jdk version.
 */}}
 {{- define "eap8.eapBuilderImage" -}}
-{{- if eq .Values.build.s2i.jdk "17"  -}}
-{{ .Values.build.s2i.jdk17.builderImage}}
-{{- else -}}
+{{- if eq .Values.build.s2i.jdk "21"  -}}
 {{ .Values.build.s2i.jdk21.builderImage}}
+{{- else -}}
+{{ .Values.build.s2i.jdk25.builderImage}}
 {{- end -}}
 {{- end -}}
 
@@ -16,10 +16,10 @@ eap8.eapRuntimeImage corresponds to the imagestream for the EAP S2I Runtime imag
 It depends on the build.s2i.jdkVersion.
 */}}
 {{- define "eap8.eapRuntimeImage" -}}
-{{- if eq .Values.build.s2i.jdk "17"  -}}
-{{ .Values.build.s2i.jdk17.runtimeImage}}
-{{- else -}}
+{{- if eq .Values.build.s2i.jdk "21"  -}}
 {{ .Values.build.s2i.jdk21.runtimeImage}}
+{{- else -}}
+{{ .Values.build.s2i.jdk25.runtimeImage}}
 {{- end -}}
 {{- end -}}
 
@@ -40,9 +40,9 @@ app.openshift.io/runtime: eap
 {{- define "eap8.metering.labels" -}}
 com.company: "Red_Hat"
 rht.prod_name: "Red_Hat_Runtimes"
-rht.prod_ver: "2025-Q3"
+rht.prod_ver: "2026-Q3"
 rht.comp: "EAP"
-rht.comp_ver: "8.1"
+rht.comp_ver: "8.2"
 rht.subcomp_t: "application"
 {{- end }}
 
