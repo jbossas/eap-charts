@@ -8,6 +8,8 @@ build:
   uri: https://github.com/jboss-eap-up-and-running/eap82-getting-started.git
   enabled: true
   mode: s2i
+  bootableJar:
+    builderImage: registry.access.redhat.com/ubi10/openjdk-21:latest
   s2i:
     buildApplicationImage: true
     kind: DockerImage
