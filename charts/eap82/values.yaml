@@ -13,11 +13,11 @@ build:
     kind: DockerImage
     jdk: "21"
     jdk21:
-      builderImage: registry.redhat.io/jboss-eap-8-tech-preview/eap82-openjdk21-builder-openshift-rhel10:latest
-      runtimeImage: registry.redhat.io/jboss-eap-8-tech-preview/eap82-openjdk21-runtime-openshift-rhel10:latest
+      builderImage: registry.redhat.io/jboss-eap-8-tech-preview/eap82-openjdk21-builder-openshift-rhel9:latest
+      runtimeImage: registry.redhat.io/jboss-eap-8-tech-preview/eap82-openjdk21-runtime-openshift-rhel9:latest
     jdk25:
-      builderImage: registry.redhat.io/jboss-eap-8-tech-preview/eap82-openjdk25-builder-openshift-rhel10:latest
-      runtimeImage: registry.redhat.io/jboss-eap-8-tech-preview/eap82-openjdk25-runtime-openshift-rhel10:latest
+      builderImage: registry.redhat.io/jboss-eap-8-tech-preview/eap82-openjdk25-builder-openshift-rhel9:latest
+      runtimeImage: registry.redhat.io/jboss-eap-8-tech-preview/eap82-openjdk25-runtime-openshift-rhel9:latest
   output:
     kind: "ImageStreamTag"
   triggers: {}
