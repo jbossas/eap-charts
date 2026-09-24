@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Helm Charts for JBoss EAP | eap-charts</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Helm Charts for JBoss EAP" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Helm Charts for Red Hat JBoss Enterprise Application Platform" />
+<meta property="og:description" content="Helm Charts for Red Hat JBoss Enterprise Application Platform" />
+<link rel="canonical" href="https://jbossas.github.io/eap-charts/" />
+<meta property="og:url" content="https://jbossas.github.io/eap-charts/" />
+<meta property="og:site_name" content="eap-charts" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Helm Charts for JBoss EAP" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Helm Charts for Red Hat JBoss Enterprise Application Platform","headline":"Helm Charts for JBoss EAP","name":"eap-charts","url":"https://jbossas.github.io/eap-charts/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/eap-charts/assets/css/style.css?v=bbf1e23f77209bfc384b4e5a31852103baddb562">
+    <script src="/eap-charts/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/eap-charts/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">eap-charts</h1>
+        <p class="header">Helm Charts for Red Hat JBoss Enterprise Application Platform</p>
+
+        <ul>
+          
+          <li><a class="buttons github" href="https://github.com/jbossas/eap-charts">View On GitHub</a></li>
+        </ul>
+
+        
+          <p class="header">This project is maintained by <a class="header name" href="https://github.com/jbossas">jbossas</a></p>
+        
+
+        
+      </header>
+
+      <section>
+        <h2 id="helm-charts-for-jboss-eap">Helm Charts for JBoss EAP</h2>
+
+<p align="center">
+  <a href="https://helm.sh"><img src="https://helm.sh/img/helm.svg" alt="Helm logo" title="WildFly" height="90" /></a>&nbsp;
+  <a href="https://www.redhat.com/en/technologies/jboss-middleware/application-platform"><img src="https://developers.redhat.com/blog/wp-content/uploads/2020/06/Logo-Red_Hat-JBoss_Enterprise_Application_Platform-B-Standard-RGB.png" alt="JBoss EAP logo" title="EAP" height="90" /></a>
+</p>
+
+<h1 id="add-the-helm-repository-for-jboss-eap-charts">Add the Helm Repository for JBoss EAP Charts</h1>
+
+<p>The Helm Charts for JBoss EAP  can be installed from <a href="https://jbossas.github.io/eap-charts/">https://jbossas.github.io/eap-charts/</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ helm repo add jboss-eap https://jbossas.github.io/eap-charts/
+"jboss-eap" has been added to your repositories
+
+$ helm search repo eap
+NAME                    CHART VERSION   APP VERSION     DESCRIPTION
+jboss-eap/eap-xp3       1.0.0           3.0             Build and Deploy EAP XP3 applications on OpenShift
+jboss-eap/eap-xp4       1.0.0           4.0             Build and Deploy EAP XP4 applications on OpenShift
+jboss-eap/eap74         1.1.2           7.4             Build and deploy JBoss EAP 7.4 applications on ...
+jboss-eap/eap8          1.1.2           8.0             Build and deploy JBoss EAP 8 applications on Op...
+</code></pre></div></div>
+
+<h1 id="install-a-helm-release-for-jboss-eap-80">Install a Helm Release for JBoss EAP 8.0</h1>
+
+<p>You can build and deploy the <a href="https://github.com/jboss-eap-up-and-running/eap8-getting-started">eap8-getting-started</a> by installing the <code class="language-plaintext highlighter-rouge">eap8</code> Helm Chart without modification:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ helm install eap8-app jboss-eap/eap8
+NAME: eap8-app
+LAST DEPLOYED: Mon May  6 17:42:19 2024
+STATUS: deployed
+REVISION: 1
+</code></pre></div></div>
+
+<h1 id="install-a-helm-release-for-jboss-eap-74">Install a Helm Release for JBoss EAP 7.4</h1>
+
+<p>We can build and deploy the <a href="https://github.com/jboss-developer/jboss-eap-quickstarts/tree/7.4.x/helloworld-rs">helloworld-rs quickstart</a> with this <a href="https://raw.githubusercontent.com/jbossas/eap-charts/eap74/examples/eap74/helloworld-rs/helloworld-rs-app.yaml">example file</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ helm install helloworld-rs-app \
+    -f https://raw.githubusercontent.com/jbossas/eap-charts/eap74/examples/eap74/helloworld-rs/helloworld-rs-app.yaml \
+    jboss-eap/eap74
+NAME: helloworld-rs-app
+LAST DEPLOYED: Tue Mar  9 11:57:33 2021
+STATUS: deployed
+REVISION: 1
+</code></pre></div></div>
+
+<h1 id="documentation">Documentation</h1>
+
+<p>Documentation for the Helm Charts are available in their respective READMES:</p>
+
+<ul>
+  <li><a href="https://github.com/jbossas/eap-charts/blob/eap8-dev/charts/eap8/README.md">JBoss EAP 8.0</a></li>
+  <li><a href="https://github.com/jbossas/eap-charts/blob/eap74/charts/eap74/README.md">JBoss EAP 7.4</a></li>
+  <li><a href="https://github.com/jbossas/eap-charts/blob/main/charts/eap-xp4/README.md">JBoss EAP XP4</a></li>
+</ul>
+
+      </section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>
